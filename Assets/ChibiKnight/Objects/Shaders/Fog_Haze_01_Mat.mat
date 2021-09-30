@@ -33,3 +33,4 @@ Material:
     - Vector2_6F38EDDE: {r: -0.39, g: 0.02, b: 0, a: 0}
     - Vector2_87CB4CE5: {r: 4.96, g: -2.3, b: 0, a: 0}
     - Vector2_A9E7C00: {r: -1.19, g: 1.13, b: 0, a: 0}
+  m_BuildTextureStacks: []
