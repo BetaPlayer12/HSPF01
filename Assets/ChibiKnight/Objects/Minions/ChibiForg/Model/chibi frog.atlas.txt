@@ -1,0 +1,272 @@
+
+chibi frog.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BackFrontLeg
+  rotate: false
+  xy: 2712, 157
+  size: 304, 339
+  orig: 304, 339
+  offset: 0, 0
+  index: -1
+BackHindFoot
+  rotate: true
+  xy: 2182, 87
+  size: 158, 123
+  orig: 158, 123
+  offset: 0, 0
+  index: -1
+BackHindLeg
+  rotate: false
+  xy: 722, 3
+  size: 186, 73
+  orig: 186, 73
+  offset: 0, 0
+  index: -1
+BackHindThigh
+  rotate: true
+  xy: 794, 1268
+  size: 260, 292
+  orig: 260, 292
+  offset: 0, 0
+  index: -1
+BackSideGums
+  rotate: false
+  xy: 1382, 1279
+  size: 366, 249
+  orig: 366, 249
+  offset: 0, 0
+  index: -1
+Body
+  rotate: false
+  xy: 722, 78
+  size: 630, 663
+  orig: 630, 663
+  offset: 0, 0
+  index: -1
+Eye_Ball
+  rotate: false
+  xy: 1721, 8
+  size: 280, 226
+  orig: 280, 226
+  offset: 0, 0
+  index: -1
+Eye_Pupil
+  rotate: false
+  xy: 1098, 19
+  size: 136, 57
+  orig: 136, 57
+  offset: 0, 0
+  index: -1
+Eye_reflect
+  rotate: false
+  xy: 389, 686
+  size: 70, 55
+  orig: 70, 55
+  offset: 0, 0
+  index: -1
+FX/FD1
+  rotate: false
+  xy: 389, 743
+  size: 514, 514
+  orig: 514, 514
+  offset: 0, 0
+  index: -1
+FX/FD10
+  rotate: false
+  xy: 2342, 1530
+  size: 514, 514
+  orig: 514, 514
+  offset: 0, 0
+  index: -1
+FX/FD11
+  rotate: false
+  xy: 2386, 498
+  size: 514, 514
+  orig: 514, 514
+  offset: 0, 0
+  index: -1
+FX/FD12
+  rotate: false
+  xy: 2453, 1014
+  size: 514, 514
+  orig: 514, 514
+  offset: 0, 0
+  index: -1
+FX/FD13
+  rotate: false
+  xy: 2858, 1530
+  size: 514, 514
+  orig: 514, 514
+  offset: 0, 0
+  index: -1
+FX/FD14
+  rotate: false
+  xy: 2902, 498
+  size: 514, 514
+  orig: 514, 514
+  offset: 0, 0
+  index: -1
+FX/FD15
+  rotate: false
+  xy: 2969, 1014
+  size: 514, 514
+  orig: 514, 514
+  offset: 0, 0
+  index: -1
+FX/FD16
+  rotate: false
+  xy: 3374, 1530
+  size: 514, 514
+  orig: 514, 514
+  offset: 0, 0
+  index: -1
+FX/FD17
+  rotate: false
+  xy: 3485, 1014
+  size: 514, 514
+  orig: 514, 514
+  offset: 0, 0
+  index: -1
+FX/FD18
+  rotate: false
+  xy: 3418, 498
+  size: 514, 514
+  orig: 514, 514
+  offset: 0, 0
+  index: -1
+FX/FD2
+  rotate: false
+  xy: 794, 1530
+  size: 514, 514
+  orig: 514, 514
+  offset: 0, 0
+  index: -1
+FX/FD3
+  rotate: false
+  xy: 905, 752
+  size: 514, 514
+  orig: 514, 514
+  offset: 0, 0
+  index: -1
+FX/FD4
+  rotate: false
+  xy: 1310, 1530
+  size: 514, 514
+  orig: 514, 514
+  offset: 0, 0
+  index: -1
+FX/FD5
+  rotate: false
+  xy: 1354, 236
+  size: 514, 514
+  orig: 514, 514
+  offset: 0, 0
+  index: -1
+FX/FD6
+  rotate: false
+  xy: 1421, 763
+  size: 514, 514
+  orig: 514, 514
+  offset: 0, 0
+  index: -1
+FX/FD7
+  rotate: false
+  xy: 1870, 247
+  size: 514, 514
+  orig: 514, 514
+  offset: 0, 0
+  index: -1
+FX/FD8
+  rotate: false
+  xy: 1826, 1530
+  size: 514, 514
+  orig: 514, 514
+  offset: 0, 0
+  index: -1
+FX/FD9
+  rotate: false
+  xy: 1937, 1014
+  size: 514, 514
+  orig: 514, 514
+  offset: 0, 0
+  index: -1
+FX/Ring
+  rotate: false
+  xy: 2003, 56
+  size: 177, 189
+  orig: 256, 256
+  offset: 37, 29
+  index: -1
+FrogBlur
+  rotate: true
+  xy: 2432, 89
+  size: 407, 278
+  orig: 887, 805
+  offset: 260, 263
+  index: -1
+FrontFace
+  rotate: false
+  xy: 2, 12
+  size: 465, 634
+  orig: 465, 634
+  offset: 0, 0
+  index: -1
+FrontForeLeg
+  rotate: false
+  xy: 3018, 157
+  size: 304, 339
+  orig: 304, 339
+  offset: 0, 0
+  index: -1
+FrontHindFoot
+  rotate: true
+  xy: 2307, 87
+  size: 158, 123
+  orig: 158, 123
+  offset: 0, 0
+  index: -1
+FrontHindLeg
+  rotate: false
+  xy: 910, 3
+  size: 186, 73
+  orig: 186, 73
+  offset: 0, 0
+  index: -1
+FrontHindThigh
+  rotate: true
+  xy: 1088, 1268
+  size: 260, 292
+  orig: 260, 292
+  offset: 0, 0
+  index: -1
+InnerMouth
+  rotate: false
+  xy: 1354, 4
+  size: 365, 230
+  orig: 365, 230
+  offset: 0, 0
+  index: -1
+Mouth
+  rotate: true
+  xy: 469, 2
+  size: 739, 251
+  orig: 739, 251
+  offset: 0, 0
+  index: -1
+MouthClose
+  rotate: true
+  xy: 389, 1259
+  size: 785, 403
+  orig: 785, 403
+  offset: 0, 0
+  index: -1
+Tounge
+  rotate: true
+  xy: 2, 648
+  size: 1396, 385
+  orig: 1396, 385
+  offset: 0, 0
+  index: -1
