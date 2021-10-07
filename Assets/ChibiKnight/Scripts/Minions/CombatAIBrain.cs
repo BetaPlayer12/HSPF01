@@ -31,8 +31,6 @@ namespace DChild.Gameplay.Characters.AI
         protected Transform m_centerMass;
         [SerializeField, TabGroup("Data")]
         protected CharacterState m_state;
-        [SerializeField, TabGroup("Target")]
-        protected Transform m_target;
         [SerializeField, TabGroup("Modules")]
         protected Rigidbody2D m_physics;
 
@@ -50,6 +48,8 @@ namespace DChild.Gameplay.Characters.AI
         private float angle;
         [SerializeField, TabGroup("Physics")]
         private float m_groundCheckOffset;
+
+        private Transform m_target;
 
         private ContactFilter2D m_filter;
         private List<Collider2D> m_colliderList;
@@ -136,6 +136,11 @@ namespace DChild.Gameplay.Characters.AI
         protected bool IsFacingTarget() => IsFacing(m_target.position);
         protected bool IsTargetInRange(float distance) => Vector2.Distance(m_target.position, m_character.centerMass.position) <= distance;
         protected Vector2 DirectionToTarget() => (m_target.position - m_character.transform.position).normalized;
+
+        public virtual void SetTarget(Transform target)
+        {
+            m_target = target;
+        }
 
         protected virtual void Start()
         {
