@@ -55,6 +55,8 @@ namespace DChild.Gameplay.Characters.Enemies
         private float m_currentFullCD;
         private float m_currentTimeScale;
 
+        private bool m_isDead;
+
         [ShowInInspector]
         private StateHandle<State> m_stateHandle;
 
@@ -103,12 +105,21 @@ namespace DChild.Gameplay.Characters.Enemies
 
         private void OnFlinchStart(object sender, EventActionArgs eventArgs)
         {
-            m_stateHandle.Wait(State.Chasing);
+            if (!m_isDead)
+            {
+                if (m_attackRoutine != null)
+                {
+                    StopCoroutine(m_attackRoutine);
+                    m_attackBB.enabled = false;
+                }
+                m_stateHandle.Wait(State.Chasing);
+            }
         }
 
         private void OnFlinchEnd(object sender, EventActionArgs eventArgs)
         {
-            m_stateHandle.ApplyQueuedState();
+            if (!m_isDead)
+                m_stateHandle.ApplyQueuedState();
         }
 
         private IEnumerator DetectRoutine()
@@ -162,6 +173,7 @@ namespace DChild.Gameplay.Characters.Enemies
 
         private void Death()
         {
+            m_isDead = true;
             enabled = false;
             if (m_attackRoutine != null)
             {

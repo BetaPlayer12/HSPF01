@@ -78,7 +78,7 @@ namespace DChild.Gameplay.Characters
         {
             FlinchStart?.Invoke(this, new EventActionArgs());
             var flinchAnim = RandomFlinch();
-            m_animator.SetAnimation(0, flinchAnim, false, 0);
+            m_animator.SetAnimation(0, flinchAnim, false, 0).MixDuration = 0;
 
             //m_spine.AddEmptyAnimation(0, 0.2f, 0);
             m_isFlinching = true;
