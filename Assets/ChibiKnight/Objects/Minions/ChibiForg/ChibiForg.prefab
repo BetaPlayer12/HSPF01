@@ -728,6 +728,8 @@ MonoBehaviour:
   m_animator: {fileID: 6991917195480400570}
   m_physics: {fileID: 5082318563626561869}
   m_damageable: {fileID: 7500612729883673878}
+  m_centerMass: {fileID: 7703687556218506637}
+  m_hitFX: {fileID: 3134577302191461896, guid: dca7add3ba92a8f45a2838c74edd5749, type: 3}
   m_flinchCooldown: 1.5
   m_skeletonAnimation: {fileID: 5082318563200408874}
   m_flinchAnimations:

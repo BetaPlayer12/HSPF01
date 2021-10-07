@@ -20,6 +20,10 @@ namespace DChild.Gameplay.Characters
         [SerializeField]
         private Damageable m_damageable;
         [SerializeField]
+        private Transform m_centerMass;
+        [SerializeField]
+        private GameObject m_hitFX;
+        [SerializeField]
         public float m_flinchCooldown;
 
 #if UNITY_EDITOR
@@ -60,6 +64,8 @@ namespace DChild.Gameplay.Characters
         public void Flinch()
         {
             m_animator.SetEmptyAnimation(1, 0);
+            Instantiate(m_hitFX, m_centerMass.position, Quaternion.identity);
+
             if (m_isFlinching == false)
             {
                 StartFlinch();
