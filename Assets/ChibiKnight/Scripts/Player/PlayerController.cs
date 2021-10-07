@@ -63,6 +63,11 @@ public class PlayerController : MonoBehaviour
     {
         EvaluateGroundedness();
 
+        if (m_state.waitForBehaviour)
+        {
+            return;
+        }
+
         if (m_state.isGrounded)
         {
             HandleGroundBehaviour();
@@ -100,27 +105,25 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (m_input.jumpPressed)
-        {
-            HandleJump();
-        }
-
-        if (m_input.walkHeld == false)
-        {
-            m_movementSpeed = m_originalMoveSpeed;
-            m_state.isWalking = false;
-        }
-
         if (m_input.walkPressed)
         {
             m_movementSpeed /= 2;
             m_state.isWalking = true;
         }
-
-        if (m_input.horizontalInput == 0)
+        else if (m_input.walkHeld == false)
         {
-            HandleIdle();
+            m_movementSpeed = m_originalMoveSpeed;
+            m_state.isWalking = false;
         }
+
+        if (m_input.jumpPressed)
+        {
+            HandleJump();
+        }
+        //else if (m_input.horizontalInput == 0)
+        //{
+        //    HandleIdle();
+        //}
         else
         {
             HandleMovement(m_input.horizontalInput);
@@ -156,21 +159,17 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (m_input.horizontalInput == 0)
-        {
-            m_rigidbody.velocity = new Vector2(0, m_rigidbody.velocity.y);
-        }
-        else
-        {
-            HandleMovement(m_input.horizontalInput);
-        }
+        HandleMovement(m_input.horizontalInput);
     }
 
     private void HandleMovement(float direction)
     {
         if (direction == 0)
         {
-
+            if (m_state.isGrounded)
+            {
+                m_animator.SetAnimation(0, "Idle1", true);
+            }
         }
         else
         {
@@ -190,7 +189,10 @@ public class PlayerController : MonoBehaviour
         var xVelocity = m_movementSpeed * direction;
         m_rigidbody.velocity = new Vector2(xVelocity, m_rigidbody.velocity.y);
 
-        HandleFacing(direction);
+        if (direction != 0)
+        {
+            HandleFacing(direction);
+        }
     }
 
     private void HandleJump()
@@ -255,6 +257,7 @@ public class PlayerController : MonoBehaviour
     private void HandleIdle()
     {
         m_animator.SetAnimation(0, "Idle1", true);
+        m_rigidbody.velocity = Vector2.zero;
     }
 
     private void EvaluateGroundedness()
@@ -268,7 +271,6 @@ public class PlayerController : MonoBehaviour
         {
             m_rigidbody.sharedMaterial = m_groundedPhysicsMaterial;
             m_canHighJump = true;
-            //m_state.isHighJumping = false;
         }
         else
         {
