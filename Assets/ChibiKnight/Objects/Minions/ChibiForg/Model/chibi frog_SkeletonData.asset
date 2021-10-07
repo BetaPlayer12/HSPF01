@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: chibi frog_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: 0c365d4625f497c4abaa38aa5c358881, type: 2}
+  - {fileID: 11400000, guid: 18f92490a70198747a9b5a3fb150d764, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: fef2cbf5ecdc07a459241a348e23c72a, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: d4134da0e0e49c04bbd9863d34824fef, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 1
     applyAdditiveMaterial: 1
     additiveMaterials:
     - pageName: chibi frog.png
-      material: {fileID: 2100000, guid: 5efafe539b50aa44a9b8ab7846e7d733, type: 2}
+      material: {fileID: 2100000, guid: ae78e838161d16748a13d87bece8a8d5, type: 2}
     multiplyMaterials: []
     screenMaterials: []
   skeletonDataModifiers: []

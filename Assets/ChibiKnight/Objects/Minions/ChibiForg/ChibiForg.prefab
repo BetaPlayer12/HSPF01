@@ -328,7 +328,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e76ee3007abf13c4e924b88a4652cc3d, type: 2}
+  - {fileID: 2100000, guid: 06af7e0ba431e3345ae07827990b61f2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -348,7 +348,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 481739441
   m_SortingLayer: 4
-  m_SortingOrder: 50
+  m_SortingOrder: 49
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &5082318563200408874
 MonoBehaviour:
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: f9788ecc1a3e11c418a4b587f3885555, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 4d5d76c0355b028489c7db5466d711d8, type: 2}
   initialSkinName: 
   initialFlipX: 1
   initialFlipY: 0
@@ -373,10 +373,10 @@ MonoBehaviour:
   immutableTriangles: 0
   pmaVertexColors: 1
   clearStateOnDisable: 0
-  tintBlack: 0
+  tintBlack: 1
   singleSubmesh: 0
   fixDrawOrder: 0
-  addNormals: 0
+  addNormals: 1
   calculateTangents: 0
   maskInteraction: 0
   maskMaterials:
@@ -734,4 +734,5 @@ MonoBehaviour:
   - Flinch1
   - Flinch2
   - Flinch3
+  m_flinchFXAnimation: FlinchFX
   m_idleAnimation: Idle

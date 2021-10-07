@@ -29,6 +29,8 @@ namespace DChild.Gameplay.Characters
         [SerializeField, Spine.Unity.SpineAnimation(dataField = "m_skeletonAnimation")]
         private List<string> m_flinchAnimations;
         [SerializeField, Spine.Unity.SpineAnimation(dataField = "m_skeletonAnimation")]
+        private string m_flinchFXAnimation;
+        [SerializeField, Spine.Unity.SpineAnimation(dataField = "m_skeletonAnimation")]
         private string m_idleAnimation;
 
         private bool m_isFlinching;
@@ -57,9 +59,14 @@ namespace DChild.Gameplay.Characters
 
         public void Flinch()
         {
+            m_animator.SetEmptyAnimation(1, 0);
             if (m_isFlinching == false)
             {
                 StartFlinch();
+            }
+            else
+            {
+                m_animator.SetAnimation(1, m_flinchFXAnimation, false, 0).MixDuration = 0;
             }
         }
 
