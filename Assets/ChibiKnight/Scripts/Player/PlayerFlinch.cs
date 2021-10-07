@@ -40,7 +40,7 @@ public class PlayerFlinch : MonoBehaviour
         m_animator = GetComponentInChildren<SkeletonAnimationHelper>();
         playerGravityScale = m_rigidBody.gravityScale;
         m_defaultLinearDrag = m_rigidBody.drag;
-        m_damageable.OnHit += Flinch;
+        m_damageable.OnTakeDamage += Flinch;
     }
 
     public void Flinch(Vector3 sourcePosition)

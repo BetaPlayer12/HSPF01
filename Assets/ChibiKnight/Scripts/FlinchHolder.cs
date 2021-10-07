@@ -49,7 +49,7 @@ namespace DChild.Gameplay.Characters
             return m_flinchAnimations[flinch];
         }
 
-        public virtual void Flinch(Vector2 directionToSource)
+        public virtual void Flinch(Vector3 directionToSource)
         {
 
             Flinch();

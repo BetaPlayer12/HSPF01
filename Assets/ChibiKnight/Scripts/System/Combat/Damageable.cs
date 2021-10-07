@@ -10,14 +10,14 @@ namespace ChibiKnight.Systems.Combat
     {
         [SerializeField, MinValue(1)]
         private int m_maxHealth = 1;
-        [ShowInInspector,HideInEditorMode,MinValue(0),MaxValue("m_maxHealth"), OnValueChanged("OnEditorHealthChange")]
+        [ShowInInspector, HideInEditorMode, MinValue(0), MaxValue("m_maxHealth"), OnValueChanged("OnEditorHealthChange")]
         private int m_currentHealth;
 
         public int maxHealth => m_currentHealth;
 
         public event Action<int> HealthChange;
         public event Action OnDeath;
-        public event Action OnTakeDamage;
+        public event Action<Vector3> OnTakeDamage;
         public int currentHealth
         {
             get => m_currentHealth;
@@ -29,10 +29,10 @@ namespace ChibiKnight.Systems.Combat
         }
 
 
-        public void TakeDamage(int value)
+        public void TakeDamage(int value, Vector2 damageSource)
         {
             currentHealth -= value;
-            OnTakeDamage?.Invoke();
+            OnTakeDamage?.Invoke(damageSource);
             if (currentHealth <= 0)
             {
                 OnDeath?.Invoke();
