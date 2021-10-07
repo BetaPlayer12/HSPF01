@@ -5,6 +5,7 @@ using DChild.Gameplay.Characters.AI;
 using ChibiKnight.Systems.Combat;
 using Holysoft.Event;
 using Spine.Unity;
+using System;
 
 namespace DChild.Gameplay.Characters.Enemies
 {
@@ -45,7 +46,11 @@ namespace DChild.Gameplay.Characters.Enemies
         private SkeletonRootMotion m_rootMotion;
         [SerializeField, TabGroup("Modules")]
         private AnimatedTurnHandle m_turnHandle;
-        
+        [SerializeField, TabGroup("Hurtbox")]
+        private Collider2D m_explosionBB;
+        [SerializeField, TabGroup("Hurtbox")]
+        private Collider2D m_attackBB;
+
         private float m_currentCD;
         private float m_currentFullCD;
         private float m_currentTimeScale;
@@ -101,6 +106,11 @@ namespace DChild.Gameplay.Characters.Enemies
             m_stateHandle.Wait(State.Chasing);
         }
 
+        private void OnFlinchEnd(object sender, EventActionArgs eventArgs)
+        {
+            m_stateHandle.ApplyQueuedState();
+        }
+
         private IEnumerator DetectRoutine()
         {
             m_animation.SetAnimation(0, m_idleAnimation, true);
@@ -112,10 +122,27 @@ namespace DChild.Gameplay.Characters.Enemies
         private IEnumerator AttackRoutine()
         {
             m_animation.SetAnimation(0, m_attackAnimation, false);
+            yield return new WaitForSeconds(.75f);
+            m_attackBB.enabled = true;
+            yield return new WaitForSeconds(.25f);
+            m_attackBB.enabled = false;
             yield return new WaitForAnimationComplete(m_animation.animationState, m_attackAnimation);
             m_stateHandle.ApplyQueuedState();
             yield return null;
         }
+
+        private IEnumerator DeathRoutine()
+        {
+            m_animation.SetAnimation(0, m_deathAnimation, false);
+            yield return new WaitForSeconds(.75f);
+            m_explosionBB.enabled = true;
+            yield return new WaitForSeconds(.25f);
+            m_explosionBB.enabled = false;
+            yield return new WaitForAnimationComplete(m_animation.animationState, m_deathAnimation);
+            this.gameObject.SetActive(false);
+            yield return null;
+        }
+
         protected override void Start()
         {
             base.Start();
@@ -128,7 +155,19 @@ namespace DChild.Gameplay.Characters.Enemies
             base.Awake();
             m_turnHandle.TurnDone += OnTurnDone;
             m_flinch.FlinchStart += OnFlinchStart;
+            m_flinch.FlinchEnd += OnFlinchEnd;
+            m_damageable.OnDeath += Death;
             m_stateHandle = new StateHandle<State>(State.Detect, State.WaitBehaviourEnd);
+        }
+
+        private void Death()
+        {
+            enabled = false;
+            if (m_attackRoutine != null)
+            {
+                StopCoroutine(m_attackRoutine);
+            }
+            StartCoroutine(DeathRoutine());
         }
 
         private void Update()

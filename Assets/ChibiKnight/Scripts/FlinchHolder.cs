@@ -5,6 +5,7 @@ using Spine.Unity;
 using ChibiKnight.Gameplay;
 using Holysoft.Event;
 using System.Collections.Generic;
+using ChibiKnight.Systems.Combat;
 
 namespace DChild.Gameplay.Characters
 {
@@ -16,6 +17,8 @@ namespace DChild.Gameplay.Characters
         private Spine.AnimationState m_animationState;
         [SerializeField]
         private Rigidbody2D m_physics;
+        [SerializeField]
+        private Damageable m_damageable;
         [SerializeField]
         public float m_flinchCooldown;
 
@@ -29,6 +32,8 @@ namespace DChild.Gameplay.Characters
         private string m_idleAnimation;
 
         private bool m_isFlinching;
+
+        private void Awake() => m_damageable.OnTakeDamage += Flinch;
 
         //public event EventAction<EventActionArgs> HitStopStart;
         public event EventAction<EventActionArgs> FlinchStart;

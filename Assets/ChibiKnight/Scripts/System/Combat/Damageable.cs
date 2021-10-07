@@ -17,6 +17,7 @@ namespace ChibiKnight.Systems.Combat
 
         public event Action<int> HealthChange;
         public event Action OnDeath;
+        public event Action OnTakeDamage;
         public int currentHealth
         {
             get => m_currentHealth;
@@ -31,6 +32,7 @@ namespace ChibiKnight.Systems.Combat
         public void TakeDamage(int value)
         {
             currentHealth -= value;
+            OnTakeDamage?.Invoke();
             if (currentHealth <= 0)
             {
                 OnDeath?.Invoke();
