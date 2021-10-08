@@ -109,6 +109,9 @@ namespace DChild.Gameplay.Characters.Enemies
                 StopCoroutine(m_attackRoutine);
                 m_attackBB.enabled = false;
             }
+            if (!IsFacingTarget())
+                CustomTurn();
+
             m_stateHandle.Wait(State.Chasing);
         }
 
