@@ -98,6 +98,12 @@ namespace DChild.Gameplay.Characters.AI
             enabled = false;
         }
 
+        private void CustomTurn()
+        {
+            transform.localScale = new Vector3(-transform.localScale.x, 1, 1);
+            m_character.SetFacing(transform.localScale.x == 1 ? HorizontalDirection.Right : HorizontalDirection.Left);
+        }
+
         public bool IsFacing(Vector2 position)
         {
             if (position.x > m_character.transform.position.x)
