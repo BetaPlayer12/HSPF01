@@ -145,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 1672088036}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4689, y: 1.4689, z: 1.4689}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1699257058}
   m_Father: {fileID: 7533202215659617742}
@@ -178,7 +178,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9aef4e91504f17d40b835854ecb6ecd6, type: 2}
+  - {fileID: 2100000, guid: 9ba1d3901091e4e469800b9496cf767a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 942c3785e42fdff469fd6e321ce7a4ab, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: c5c15b4d8e6032a4cb9d81102c0d85fe, type: 2}
   initialSkinName: ChibiDeath
   initialFlipX: 0
   initialFlipY: 0
@@ -223,10 +223,10 @@ MonoBehaviour:
   immutableTriangles: 0
   pmaVertexColors: 1
   clearStateOnDisable: 0
-  tintBlack: 0
+  tintBlack: 1
   singleSubmesh: 0
   fixDrawOrder: 0
-  addNormals: 0
+  addNormals: 1
   calculateTangents: 0
   maskInteraction: 0
   maskMaterials:
@@ -525,7 +525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_input: {fileID: 7108316127039878723}
   m_state: {fileID: 5921402890112096364}
-  m_movementSpeed: 60
+  m_movementSpeed: 50
   m_jumpPower: 100
   m_highJumpPower: 60
   m_collisionLayer:
@@ -537,7 +537,7 @@ MonoBehaviour:
     type: 2}
   m_animator: {fileID: 2846347991001536118}
   m_origin: {x: -0.5, y: -0.03}
-  boxSize: {x: 5, y: 0.5}
+  boxSize: {x: 3, y: 1}
   angle: 0
   m_groundCheckOffset: 0
   m_highJumpDuration: 0.2
