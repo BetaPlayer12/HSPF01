@@ -28,6 +28,7 @@ namespace DChild.Gameplay.Characters.Enemies
         private enum State
         {
             Detect,
+            Idle,
             Turning,
             Attacking,
             Cooldown,
@@ -103,6 +104,14 @@ namespace DChild.Gameplay.Characters.Enemies
 
         private void OnFlinchStart(object sender, EventActionArgs eventArgs)
         {
+            if (m_attackRoutine != null)
+            {
+                StopCoroutine(m_attackRoutine);
+                m_attackBB.enabled = false;
+            }
+            if (!IsFacingTarget())
+                CustomTurn();
+
             m_stateHandle.Wait(State.Chasing);
         }
 
@@ -143,6 +152,12 @@ namespace DChild.Gameplay.Characters.Enemies
             yield return null;
         }
 
+        public override void SetTarget(Transform target)
+        {
+            base.SetTarget(target);
+            m_stateHandle.SetState(State.Detect);
+        }
+
         protected override void Start()
         {
             base.Start();
@@ -157,12 +172,14 @@ namespace DChild.Gameplay.Characters.Enemies
             m_flinch.FlinchStart += OnFlinchStart;
             m_flinch.FlinchEnd += OnFlinchEnd;
             m_damageable.OnDeath += Death;
-            m_stateHandle = new StateHandle<State>(State.Detect, State.WaitBehaviourEnd);
+            m_stateHandle = new StateHandle<State>(State.Idle, State.WaitBehaviourEnd);
         }
 
         private void Death()
         {
+            m_flinch.gameObject.SetActive(false);
             enabled = false;
+            m_stateHandle.Wait(State.Detect);
             if (m_attackRoutine != null)
             {
                 StopCoroutine(m_attackRoutine);
@@ -177,9 +194,22 @@ namespace DChild.Gameplay.Characters.Enemies
             switch (m_stateHandle.currentState)
             {
                 case State.Detect:
-                    m_physics.velocity = Vector2.zero;
-                    m_stateHandle.Wait(State.Chasing);
-                    StartCoroutine(DetectRoutine());
+                    if (IsFacingTarget())
+                    {
+                        m_physics.velocity = Vector2.zero;
+                        m_stateHandle.Wait(State.Chasing);
+                        StartCoroutine(DetectRoutine());
+                    }
+                    else
+                    {
+                        m_turnState = State.Detect;
+                        if (m_animation.GetCurrentAnimation(0).ToString() != m_turnAnimation)
+                            m_stateHandle.SetState(State.Turning);
+                    }
+                    break;
+
+                case State.Idle:
+                    m_animation.SetAnimation(0, m_idleAnimation, true);
                     break;
 
                 case State.Turning:

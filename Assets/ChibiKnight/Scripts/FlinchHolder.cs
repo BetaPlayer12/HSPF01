@@ -20,6 +20,10 @@ namespace DChild.Gameplay.Characters
         [SerializeField]
         private Damageable m_damageable;
         [SerializeField]
+        private Transform m_centerMass;
+        [SerializeField]
+        private GameObject m_hitFX;
+        [SerializeField]
         public float m_flinchCooldown;
 
 #if UNITY_EDITOR
@@ -28,6 +32,8 @@ namespace DChild.Gameplay.Characters
 #endif
         [SerializeField, Spine.Unity.SpineAnimation(dataField = "m_skeletonAnimation")]
         private List<string> m_flinchAnimations;
+        [SerializeField, Spine.Unity.SpineAnimation(dataField = "m_skeletonAnimation")]
+        private string m_flinchFXAnimation;
         [SerializeField, Spine.Unity.SpineAnimation(dataField = "m_skeletonAnimation")]
         private string m_idleAnimation;
 
@@ -57,9 +63,16 @@ namespace DChild.Gameplay.Characters
 
         public void Flinch()
         {
+            m_animator.SetEmptyAnimation(1, 0);
+            Instantiate(m_hitFX, m_centerMass.position, Quaternion.identity);
+
             if (m_isFlinching == false)
             {
                 StartFlinch();
+            }
+            else
+            {
+                m_animator.SetAnimation(1, m_flinchFXAnimation, false, 0).MixDuration = 0;
             }
         }
 
@@ -78,7 +91,7 @@ namespace DChild.Gameplay.Characters
         {
             FlinchStart?.Invoke(this, new EventActionArgs());
             var flinchAnim = RandomFlinch();
-            m_animator.SetAnimation(0, flinchAnim, false, 0);
+            m_animator.SetAnimation(0, flinchAnim, false, 0).MixDuration = 0;
 
             //m_spine.AddEmptyAnimation(0, 0.2f, 0);
             m_isFlinching = true;
