@@ -36,10 +36,12 @@ public class PlayerController : MonoBehaviour
     private float angle;
     [SerializeField]
     private float m_groundCheckOffset;
+    private bool m_previouslyAirborne = false;
 
     //Jump
     [SerializeField]
     private float m_highJumpDuration;
+    private bool m_isFalling = false;
 
     //Attacks
     [SerializeField]
@@ -62,6 +64,11 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         EvaluateGroundedness();
+
+        if (m_state.waitForBehaviour)
+        {
+            return;
+        }
 
         if (m_state.isGrounded)
         {
@@ -100,27 +107,25 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (m_input.jumpPressed)
-        {
-            HandleJump();
-        }
-
-        if (m_input.walkHeld == false)
-        {
-            m_movementSpeed = m_originalMoveSpeed;
-            m_state.isWalking = false;
-        }
-
         if (m_input.walkPressed)
         {
             m_movementSpeed /= 2;
             m_state.isWalking = true;
         }
-
-        if (m_input.horizontalInput == 0)
+        else if (m_input.walkHeld == false)
         {
-            HandleIdle();
+            m_movementSpeed = m_originalMoveSpeed;
+            m_state.isWalking = false;
         }
+
+        if (m_input.jumpPressed)
+        {
+            HandleJump();
+        }
+        //else if (m_input.horizontalInput == 0)
+        //{
+        //    HandleIdle();
+        //}
         else
         {
             HandleMovement(m_input.horizontalInput);
@@ -156,21 +161,17 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (m_input.horizontalInput == 0)
-        {
-            m_rigidbody.velocity = new Vector2(0, m_rigidbody.velocity.y);
-        }
-        else
-        {
-            HandleMovement(m_input.horizontalInput);
-        }
+        HandleMovement(m_input.horizontalInput);
     }
 
     private void HandleMovement(float direction)
     {
-        if (direction == 0)
+        if (direction == 0 && m_state.isGrounded)
         {
-
+            if (m_state.isGrounded)
+            {
+                m_animator.SetAnimation(0, "Idle1", true);
+            }
         }
         else
         {
@@ -185,25 +186,48 @@ public class PlayerController : MonoBehaviour
                     m_animator.SetAnimation(0, "Run_inPlace", true);
                 }
             }
+            else
+            {
+                if (m_rigidbody.velocity.y > 0)
+                {
+                    m_animator.SetAnimation(0, "Jump_1Rise_Loop", true, 0);
+                }
+                else if (m_rigidbody.velocity.y < 0)
+                {
+                    if (m_isFalling == false)
+                    {
+                        m_isFalling = true;
+                        m_animator.SetAnimation(0, "Jump_2RisetoFalling", false, 0);
+                        m_animator.skeletonAnimation.state.Complete += JumpRiseToFallingState_Complete;
+                    }
+                    //else
+                    //{
+                    //    m_animator.SetAnimation(0, "Jump_3Fall_Loop", true, 0);
+                    //}
+                }
+            }
         }
 
         var xVelocity = m_movementSpeed * direction;
         m_rigidbody.velocity = new Vector2(xVelocity, m_rigidbody.velocity.y);
 
-        HandleFacing(direction);
+        if (direction != 0)
+        {
+            HandleFacing(direction);
+        }
     }
 
     private void HandleJump()
     {
         m_state.isHighJumping = true;
-        m_animator.SetAnimation(0, "Jump_1Rise", false, 0);
+        m_animator.SetAnimation(0, "Jump_1Rise_Loop", false, 0);
         m_rigidbody.velocity = new Vector2(m_rigidbody.velocity.x, m_jumpPower);
         m_highJumpCurrentTimer = m_highJumpDuration;
     }
 
     private void HandleHighJump()
     {
-        m_animator.SetAnimation(0, "Jump_1Rise", false, 0);
+        //m_animator.SetAnimation(0, "Jump_1Rise", false, 0);
         m_highJumpCurrentTimer -= Time.deltaTime;
 
         if (m_highJumpCurrentTimer <= 0)
@@ -255,6 +279,7 @@ public class PlayerController : MonoBehaviour
     private void HandleIdle()
     {
         m_animator.SetAnimation(0, "Idle1", true);
+        m_rigidbody.velocity = Vector2.zero;
     }
 
     private void EvaluateGroundedness()
@@ -262,13 +287,22 @@ public class PlayerController : MonoBehaviour
         int groundColliderResult = Physics2D.OverlapBox(m_origin + (Vector2)transform.position, boxSize, angle, m_filter, m_colliderList);
         var isGrounded = groundColliderResult > 0 ? true : false;
 
+        if (m_state.isGrounded == false)
+        {
+            if (isGrounded == true)
+            {
+                Debug.Log("LAND");
+                m_animator.SetAnimation(0, "Jump_4Land", false);
+            }
+        }
+
         m_state.isGrounded = isGrounded;
 
         if (isGrounded == true)
         {
             m_rigidbody.sharedMaterial = m_groundedPhysicsMaterial;
             m_canHighJump = true;
-            //m_state.isHighJumping = false;
+            m_isFalling = false;
         }
         else
         {
@@ -291,5 +325,11 @@ public class PlayerController : MonoBehaviour
         {
             m_attackColliders[i].enabled = false;
         }
+    }
+
+    private void JumpRiseToFallingState_Complete(Spine.TrackEntry trackEntry)
+    {
+        m_animator.skeletonAnimation.state.Complete -= State_Complete;
+        m_animator.SetAnimation(0, "Jump_3Fall_Loop", true, 0);
     }
 }

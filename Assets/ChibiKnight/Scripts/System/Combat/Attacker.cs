@@ -13,7 +13,7 @@ namespace ChibiKnight.Systems.Combat
             if (collision.CompareTag("Hitbox") == false)
                 return;
 
-            collision.GetComponentInParent<Damageable>().TakeDamage(m_damage);
+            collision.GetComponentInParent<Damageable>().TakeDamage(m_damage, gameObject.transform.position);
         }
     }
 }

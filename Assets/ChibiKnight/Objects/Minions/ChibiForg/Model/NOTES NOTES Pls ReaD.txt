@@ -1,3 +1,0 @@
-Explosion during Death has damage
-
-Knockback Distance Upon third combo of player on minion. 
