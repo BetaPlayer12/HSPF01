@@ -55,7 +55,6 @@ namespace DChild.Gameplay.Characters.Enemies
 
         private float m_currentCD;
         private float m_currentFullCD;
-        private float m_currentTimeScale;
 
         [ShowInInspector]
         private StateHandle<State> m_stateHandle;
@@ -86,6 +85,8 @@ namespace DChild.Gameplay.Characters.Enemies
             if (m_attackRoutine != null)
             {
                 StopCoroutine(m_attackRoutine);
+                m_attackRoutine = null;
+                DeactivateAim();
             }
             if (!IsFacingTarget())
                 CustomTurn();
@@ -145,7 +146,6 @@ namespace DChild.Gameplay.Characters.Enemies
         protected override void Start()
         {
             base.Start();
-            m_currentTimeScale = UnityEngine.Random.Range(1.0f, 2.0f);
             m_currentFullCD = UnityEngine.Random.Range(.5f, 2f);
         }
 
@@ -257,7 +257,7 @@ namespace DChild.Gameplay.Characters.Enemies
                                 m_rootMotion.transformPositionX = true;
                                 if (m_state.isGrounded)
                                 {
-                                    m_animation.SetAnimation(0, m_moveAnimation, true).TimeScale = m_currentTimeScale;
+                                    m_animation.SetAnimation(0, m_moveAnimation, true);
                                     //m_movement.MoveTowards(Vector2.one * transform.localScale.x, m_info.move.speed);
                                 }
                                 else

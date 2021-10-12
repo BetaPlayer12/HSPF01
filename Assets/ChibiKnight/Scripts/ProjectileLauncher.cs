@@ -22,7 +22,7 @@ public class ProjectileLauncher : MonoBehaviour
     public void LaunchProjectile()
     {
         var spawnDirection = m_spawnPoint.right;
-        m_projectile.GetComponent<Rigidbody2D>().velocity = spawnDirection * m_projectileSpeed;
         var projectile = Instantiate(m_projectile, m_spawnPoint.position, m_spawnPoint.rotation);
+        projectile.GetComponent<Rigidbody2D>().velocity = spawnDirection * m_projectileSpeed;
     }
 }
