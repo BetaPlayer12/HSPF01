@@ -3701,7 +3701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_projectile: {fileID: 7346018542564817510, guid: 07a3fbf990089b74985494e826ee8ab4,
     type: 3}
-  m_projectileSpeed: 60
+  m_projectileSpeed: 150
   m_spawnPoint: {fileID: 830975109591355361}
 --- !u!1 &5799052903453497270
 GameObject:
