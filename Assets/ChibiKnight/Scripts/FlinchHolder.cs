@@ -37,7 +37,10 @@ namespace DChild.Gameplay.Characters
         [SerializeField, Spine.Unity.SpineAnimation(dataField = "m_skeletonAnimation")]
         private string m_idleAnimation;
 
+        private string m_currentFlinchAnimation;
+
         private bool m_isFlinching;
+        private bool m_canFlinch = true;
 
         private void Awake() => m_damageable.OnTakeDamage += Flinch;
 
@@ -48,25 +51,37 @@ namespace DChild.Gameplay.Characters
 
         private Coroutine m_flinchRoutine;
 
+        public void CanFlinch(bool allowFlinch)
+        {
+            m_canFlinch = allowFlinch;
+        }
 
         private string RandomFlinch()
         {
-            int flinch = UnityEngine.Random.Range(0, m_flinchAnimations.Count);
+            int flinch = 0;
+            if (m_flinchAnimations.Count > 1)
+            {
+                while (m_flinchAnimations[flinch] == m_currentFlinchAnimation)
+                {
+                    flinch = UnityEngine.Random.Range(0, m_flinchAnimations.Count);
+                }
+            }
             return m_flinchAnimations[flinch];
         }
 
         public virtual void Flinch(Vector3 directionToSource)
         {
-
-            Flinch();
+            m_animator.SetEmptyAnimation(1, 0);
+            Instantiate(m_hitFX, m_centerMass.position, Quaternion.identity);
+            m_animator.SetAnimation(1, m_flinchFXAnimation, false, 0).MixDuration = 0;
+            if (m_canFlinch)
+            {
+                Flinch();
+            }
         }
 
         public void Flinch()
         {
-            m_animator.SetEmptyAnimation(1, 0);
-            Instantiate(m_hitFX, m_centerMass.position, Quaternion.identity);
-            m_animator.SetAnimation(1, m_flinchFXAnimation, false, 0).MixDuration = 0;
-
             if (m_isFlinching == false)
             {
                 StartFlinch();
@@ -87,13 +102,14 @@ namespace DChild.Gameplay.Characters
         private IEnumerator FlinchRoutine()
         {
             FlinchStart?.Invoke(this, new EventActionArgs());
-            var flinchAnim = RandomFlinch();
-            m_animator.SetAnimation(0, flinchAnim, false, 0).MixDuration = 0;
+            m_currentFlinchAnimation = RandomFlinch();
+            m_animator.SetAnimation(0, m_currentFlinchAnimation, false, 0).MixDuration = 0;
+            m_animator.AddAnimation(0, m_idleAnimation, true, 0);
 
             //m_spine.AddEmptyAnimation(0, 0.2f, 0);
             m_isFlinching = true;
-            yield return new WaitForAnimationComplete(m_animationState, flinchAnim);
-            m_animator.SetAnimation(0, m_idleAnimation, true);
+            yield return new WaitForAnimationComplete(m_animationState, m_idleAnimation);
+            //m_animator.SetAnimation(0, m_idleAnimation, true);
             yield return new WaitForSeconds(m_flinchCooldown);
             m_isFlinching = false;
             FlinchEnd?.Invoke(this, new EventActionArgs());

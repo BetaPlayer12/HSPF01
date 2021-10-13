@@ -103,11 +103,6 @@ namespace DChild.Gameplay.Characters.Enemies
 
         private void OnFlinchStart(object sender, EventActionArgs eventArgs)
         {
-            if (m_attackRoutine != null)
-            {
-                StopCoroutine(m_attackRoutine);
-                m_attackBB.enabled = false;
-            }
             if (!IsFacingTarget())
                 CustomTurn();
 
@@ -129,12 +124,14 @@ namespace DChild.Gameplay.Characters.Enemies
 
         private IEnumerator AttackRoutine()
         {
+            m_flinch.CanFlinch(false);
             m_animation.SetAnimation(0, m_attackAnimation, false);
             yield return new WaitForSeconds(.75f);
             m_attackBB.enabled = true;
             yield return new WaitForSeconds(.25f);
             m_attackBB.enabled = false;
             yield return new WaitForAnimationComplete(m_animation.animationState, m_attackAnimation);
+            m_flinch.CanFlinch(true);
             m_stateHandle.ApplyQueuedState();
             yield return null;
         }

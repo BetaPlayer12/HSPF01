@@ -71,6 +71,7 @@ namespace DChild.Gameplay.Characters.Enemies
 
         private void OnTurnDone(object sender, FacingEventArgs eventArgs)
         {
+            m_flinch.CanFlinch(true);
             m_stateHandle.ApplyQueuedState();
         }
 
@@ -82,12 +83,6 @@ namespace DChild.Gameplay.Characters.Enemies
 
         private void OnFlinchStart(object sender, EventActionArgs eventArgs)
         {
-            if (m_attackRoutine != null)
-            {
-                StopCoroutine(m_attackRoutine);
-                m_attackRoutine = null;
-                DeactivateAim();
-            }
             if (!IsFacingTarget())
                 CustomTurn();
 
@@ -109,8 +104,10 @@ namespace DChild.Gameplay.Characters.Enemies
 
         private IEnumerator AttackRoutine()
         {
+            m_flinch.CanFlinch(false);
             m_animation.SetAnimation(0, m_attackAnimation, false);
             yield return new WaitForAnimationComplete(m_animation.animationState, m_attackAnimation);
+            m_flinch.CanFlinch(true);
             m_stateHandle.ApplyQueuedState();
             yield return null;
         }
@@ -131,11 +128,20 @@ namespace DChild.Gameplay.Characters.Enemies
 
         public void ActivateAim()
         {
+            if (Vector2.Distance(transform.position, m_target.position) > 5f && transform.position.y != m_target.position.y)
+            {
+                m_projectileBone.mode = SkeletonUtilityBone.Mode.Override;
+            }
+
+            if (!IsFacingTarget())
+            {
+                CustomTurn();
+            }
             Debug.Log("Activate AIM");
-            m_projectileBone.mode = SkeletonUtilityBone.Mode.Override;
+            var target = m_target.position;
+            m_launcher.AimAt(new Vector2(target.x, target.y + 5f));
+            m_projectileBone.transform.position = new Vector2(target.x, target.y + 10f);
             //var targetPos = new Vector2(m_target.position.x, m_target.position.y + 10f);
-            m_launcher.AimAt(new Vector2(m_target.position.x, m_target.position.y + 5f));
-            m_projectileBone.transform.position = new Vector2(m_target.position.x, m_target.position.y + 10f);
         }
 
         public void DeactivateAim()
@@ -198,6 +204,7 @@ namespace DChild.Gameplay.Characters.Enemies
 
                 case State.Turning:
                     m_stateHandle.Wait(m_turnState);
+                    m_flinch.CanFlinch(false);
                     m_turnHandle.Execute(m_turnAnimation, m_idleAnimation);
                     break;
 

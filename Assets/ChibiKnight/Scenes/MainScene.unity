@@ -14086,6 +14086,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 830975109591355361, guid: d247cecec735546429251649141bb675,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.187988
+      objectReference: {fileID: 0}
+    - target: {fileID: 830975109591355361, guid: d247cecec735546429251649141bb675,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.1852047
+      objectReference: {fileID: 0}
     - target: {fileID: 4130152814554824518, guid: d247cecec735546429251649141bb675,
         type: 3}
       propertyPath: m_Mesh
@@ -25933,7 +25943,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1928738370}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
