@@ -26,8 +26,14 @@ MonoBehaviour:
     multiplyMaterials: []
     screenMaterials: []
   skeletonDataModifiers: []
-  fromAnimation: []
-  toAnimation: []
-  duration: []
+  fromAnimation:
+  - Jump_4Land
+  - Jump_4LandHard
+  toAnimation:
+  - Idle1
+  - Idle1
+  duration:
+  - 0
+  - 0
   defaultMix: 0.2
   controller: {fileID: 0}

@@ -49,6 +49,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""UltimateSlash"",
+                    ""type"": ""Button"",
+                    ""id"": ""0ff9f974-d2f5-4fc2-a838-5e061d3600b1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -117,6 +125,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Walk"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""69e3847e-8b90-4b5d-8a2d-0b59f341523e"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UltimateSlash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -129,6 +148,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Walk = m_Gameplay.FindAction("Walk", throwIfNotFound: true);
         m_Gameplay_Slash = m_Gameplay.FindAction("Slash", throwIfNotFound: true);
+        m_Gameplay_UltimateSlash = m_Gameplay.FindAction("UltimateSlash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -182,6 +202,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Walk;
     private readonly InputAction m_Gameplay_Slash;
+    private readonly InputAction m_Gameplay_UltimateSlash;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -190,6 +211,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Walk => m_Wrapper.m_Gameplay_Walk;
         public InputAction @Slash => m_Wrapper.m_Gameplay_Slash;
+        public InputAction @UltimateSlash => m_Wrapper.m_Gameplay_UltimateSlash;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -211,6 +233,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Slash.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSlash;
                 @Slash.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSlash;
                 @Slash.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSlash;
+                @UltimateSlash.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUltimateSlash;
+                @UltimateSlash.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUltimateSlash;
+                @UltimateSlash.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUltimateSlash;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -227,6 +252,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Slash.started += instance.OnSlash;
                 @Slash.performed += instance.OnSlash;
                 @Slash.canceled += instance.OnSlash;
+                @UltimateSlash.started += instance.OnUltimateSlash;
+                @UltimateSlash.performed += instance.OnUltimateSlash;
+                @UltimateSlash.canceled += instance.OnUltimateSlash;
             }
         }
     }
@@ -237,5 +265,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnWalk(InputAction.CallbackContext context);
         void OnSlash(InputAction.CallbackContext context);
+        void OnUltimateSlash(InputAction.CallbackContext context);
     }
 }
