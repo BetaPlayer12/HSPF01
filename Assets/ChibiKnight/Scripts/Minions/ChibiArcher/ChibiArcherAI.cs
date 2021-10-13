@@ -9,7 +9,7 @@ using System;
 
 namespace DChild.Gameplay.Characters.Enemies
 {
-    public class ChibiForgAI : CombatAIBrain
+    public class ChibiArcherAI : CombatAIBrain
     {
         [SerializeField, Spine.Unity.SpineAnimation(dataField = "m_skeletonAnimation"), TabGroup("Animation")]
         private string m_idleAnimation;
@@ -43,14 +43,15 @@ namespace DChild.Gameplay.Characters.Enemies
             _COUNT
         }
 
+        [SerializeField, TabGroup("Reference")]
+        private ProjectileLauncher m_launcher;
         [SerializeField, TabGroup("Modules")]
         private SkeletonRootMotion m_rootMotion;
         [SerializeField, TabGroup("Modules")]
         private AnimatedTurnHandle m_turnHandle;
-        [SerializeField, TabGroup("Hurtbox")]
-        private Collider2D m_explosionBB;
-        [SerializeField, TabGroup("Hurtbox")]
-        private Collider2D m_attackBB;
+
+        [SerializeField, TabGroup("Bone")]
+        private SkeletonUtilityBone m_projectileBone;
 
         private float m_currentCD;
         private float m_currentFullCD;
@@ -78,35 +79,14 @@ namespace DChild.Gameplay.Characters.Enemies
             transform.localScale = new Vector3(-transform.localScale.x, 1, 1);
             m_character.SetFacing(transform.localScale.x == 1 ? HorizontalDirection.Right : HorizontalDirection.Left);
         }
-        
-
-        //protected override void OnDestroyed(object sender, EventActionArgs eventArgs)
-        //{
-        //    //m_Audiosource.clip = m_DeadClip;
-        //    //m_Audiosource.Play();
-        //    StopAllCoroutines();
-        //    base.OnDestroyed(sender, eventArgs);
-        //    m_stateHandle.OverrideState(State.WaitBehaviourEnd);
-        //    if (m_attackRoutine != null)
-        //    {
-        //        StopCoroutine(m_attackRoutine);
-        //    }
-        //    if (m_sneerRoutine != null)
-        //    {
-        //        StopCoroutine(m_sneerRoutine);
-        //    }
-        //    m_character.physics.UseStepClimb(true);
-        //    m_movement.Stop();
-        //    m_animation.SetEmptyAnimation(0, 0);
-        //    StartCoroutine(ResurrectRoutine());
-        //}
 
         private void OnFlinchStart(object sender, EventActionArgs eventArgs)
         {
             if (m_attackRoutine != null)
             {
                 StopCoroutine(m_attackRoutine);
-                m_attackBB.enabled = false;
+                m_attackRoutine = null;
+                DeactivateAim();
             }
             if (!IsFacingTarget())
                 CustomTurn();
@@ -130,10 +110,6 @@ namespace DChild.Gameplay.Characters.Enemies
         private IEnumerator AttackRoutine()
         {
             m_animation.SetAnimation(0, m_attackAnimation, false);
-            yield return new WaitForSeconds(.75f);
-            m_attackBB.enabled = true;
-            yield return new WaitForSeconds(.25f);
-            m_attackBB.enabled = false;
             yield return new WaitForAnimationComplete(m_animation.animationState, m_attackAnimation);
             m_stateHandle.ApplyQueuedState();
             yield return null;
@@ -142,10 +118,6 @@ namespace DChild.Gameplay.Characters.Enemies
         private IEnumerator DeathRoutine()
         {
             m_animation.SetAnimation(0, m_deathAnimation, false);
-            yield return new WaitForSeconds(.75f);
-            m_explosionBB.enabled = true;
-            yield return new WaitForSeconds(.25f);
-            m_explosionBB.enabled = false;
             yield return new WaitForAnimationComplete(m_animation.animationState, m_deathAnimation);
             this.gameObject.SetActive(false);
             yield return null;
@@ -155,6 +127,20 @@ namespace DChild.Gameplay.Characters.Enemies
         {
             base.SetTarget(target);
             m_stateHandle.SetState(State.Detect);
+        }
+
+        public void ActivateAim()
+        {
+            Debug.Log("Activate AIM");
+            m_projectileBone.mode = SkeletonUtilityBone.Mode.Override;
+            //var targetPos = new Vector2(m_target.position.x, m_target.position.y + 10f);
+            m_launcher.AimAt(new Vector2(m_target.position.x, m_target.position.y + 5f));
+            m_projectileBone.transform.position = new Vector2(m_target.position.x, m_target.position.y + 10f);
+        }
+
+        public void DeactivateAim()
+        {
+            m_projectileBone.mode = SkeletonUtilityBone.Mode.Follow;
         }
 
         protected override void Start()
