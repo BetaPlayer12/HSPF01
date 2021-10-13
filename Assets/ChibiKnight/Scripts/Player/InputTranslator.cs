@@ -7,6 +7,7 @@ public class InputTranslator : MonoBehaviour
     public bool jumpPressed;
     public bool jumpHeld;
     public bool slashPressed;
+    public bool ultimateSlashPressed;
     public bool walkPressed;
     public bool walkHeld;
 
@@ -63,6 +64,14 @@ public class InputTranslator : MonoBehaviour
         }
     }
 
+    private void OnUltimateSlash(InputValue value)
+    {
+        if (enabled == true)
+        {
+            ultimateSlashPressed = value.Get<float>() == 1;
+        }
+    }
+
     private void OnWalk(InputValue value)
     {
         if (enabled == true)
@@ -87,6 +96,7 @@ public class InputTranslator : MonoBehaviour
     {
         jumpPressed = false;
         slashPressed = false;
+        ultimateSlashPressed = false;
         walkPressed = false;
     }
 
@@ -96,6 +106,7 @@ public class InputTranslator : MonoBehaviour
         jumpPressed = false;
         jumpHeld = false;
         slashPressed = false;
+        ultimateSlashPressed = false;
         walkPressed = false;
         walkHeld = false;
     }

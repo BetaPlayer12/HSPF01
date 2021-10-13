@@ -1,0 +1,348 @@
+
+Rigging chibi demon girl.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Belt
+  rotate: false
+  xy: 1544, 2
+  size: 219, 55
+  orig: 219, 55
+  offset: 0, 0
+  index: -1
+Bow
+  rotate: true
+  xy: 739, 713
+  size: 308, 892
+  orig: 308, 892
+  offset: 0, 0
+  index: -1
+Brow
+  rotate: true
+  xy: 1544, 73
+  size: 64, 56
+  orig: 64, 56
+  offset: 0, 0
+  index: -1
+Ears
+  rotate: false
+  xy: 2, 233
+  size: 217, 193
+  orig: 217, 193
+  offset: 0, 0
+  index: -1
+Eye
+  rotate: true
+  xy: 1381, 4
+  size: 133, 161
+  orig: 133, 161
+  offset: 0, 0
+  index: -1
+Head
+  rotate: true
+  xy: 2, 428
+  size: 593, 735
+  orig: 593, 735
+  offset: 0, 0
+  index: -1
+Horn
+  rotate: true
+  xy: 482, 61
+  size: 207, 97
+  orig: 207, 97
+  offset: 0, 0
+  index: -1
+L_Arm_Def
+  rotate: false
+  xy: 964, 145
+  size: 175, 99
+  orig: 175, 99
+  offset: 0, 0
+  index: -1
+L_Fingers
+  rotate: false
+  xy: 142, 22
+  size: 43, 80
+  orig: 43, 80
+  offset: 0, 0
+  index: -1
+L_Foot
+  rotate: false
+  xy: 1910, 12
+  size: 128, 45
+  orig: 128, 45
+  offset: 0, 0
+  index: -1
+L_ForeArm_Def
+  rotate: false
+  xy: 822, 139
+  size: 140, 105
+  orig: 140, 105
+  offset: 0, 0
+  index: -1
+L_ForeLeg
+  rotate: false
+  xy: 581, 83
+  size: 122, 185
+  orig: 122, 185
+  offset: 0, 0
+  index: -1
+L_Hair
+  rotate: false
+  xy: 739, 246
+  size: 514, 465
+  orig: 514, 465
+  offset: 0, 0
+  index: -1
+L_Hand_Close
+  rotate: false
+  xy: 705, 49
+  size: 81, 85
+  orig: 81, 85
+  offset: 0, 0
+  index: -1
+L_Hand_Def
+  rotate: false
+  xy: 705, 136
+  size: 115, 108
+  orig: 115, 108
+  offset: 0, 0
+  index: -1
+L_Leg
+  rotate: false
+  xy: 221, 123
+  size: 111, 218
+  orig: 111, 218
+  offset: 0, 0
+  index: -1
+Layer 255
+  rotate: false
+  xy: 1593, 421
+  size: 30, 53
+  orig: 30, 53
+  offset: 0, 0
+  index: -1
+Layer 45
+  rotate: false
+  xy: 1765, 8
+  size: 143, 49
+  orig: 143, 49
+  offset: 0, 0
+  index: -1
+Mouth_Arghh
+  rotate: true
+  xy: 142, 104
+  size: 127, 73
+  orig: 127, 73
+  offset: 0, 0
+  index: -1
+Mouth_Def
+  rotate: true
+  xy: 1141, 118
+  size: 126, 94
+  orig: 126, 94
+  offset: 0, 0
+  index: -1
+Mouth_Haha
+  rotate: false
+  xy: 964, 49
+  size: 126, 94
+  orig: 126, 94
+  offset: 0, 0
+  index: -1
+Mouth_O
+  rotate: true
+  xy: 1511, 401
+  size: 73, 80
+  orig: 73, 80
+  offset: 0, 0
+  index: -1
+Palda1
+  rotate: true
+  xy: 1255, 400
+  size: 311, 254
+  orig: 311, 254
+  offset: 0, 0
+  index: -1
+Palda2
+  rotate: false
+  xy: 1607, 59
+  size: 413, 222
+  orig: 413, 222
+  offset: 0, 0
+  index: -1
+Palda3
+  rotate: true
+  xy: 1255, 61
+  size: 337, 124
+  orig: 337, 124
+  offset: 0, 0
+  index: -1
+Pupil
+  rotate: true
+  xy: 1131, 58
+  size: 58, 122
+  orig: 58, 122
+  offset: 0, 0
+  index: -1
+R_Arm_Def
+  rotate: true
+  xy: 334, 2
+  size: 169, 140
+  orig: 169, 140
+  offset: 0, 0
+  index: -1
+R_Foot
+  rotate: true
+  xy: 1092, 30
+  size: 113, 37
+  orig: 113, 37
+  offset: 0, 0
+  index: -1
+R_ForeArm_Def
+  rotate: true
+  xy: 557, 270
+  size: 156, 147
+  orig: 156, 147
+  offset: 0, 0
+  index: -1
+R_ForeLeg
+  rotate: false
+  xy: 334, 173
+  size: 146, 168
+  orig: 146, 168
+  offset: 0, 0
+  index: -1
+R_Hair
+  rotate: true
+  xy: 1633, 283
+  size: 738, 374
+  orig: 738, 374
+  offset: 0, 0
+  index: -1
+R_Hand_Close
+  rotate: false
+  xy: 822, 47
+  size: 92, 90
+  orig: 92, 90
+  offset: 0, 0
+  index: -1
+R_Hand_Def
+  rotate: true
+  xy: 1511, 476
+  size: 115, 111
+  orig: 115, 111
+  offset: 0, 0
+  index: -1
+R_Leg
+  rotate: false
+  xy: 2, 22
+  size: 138, 209
+  orig: 138, 209
+  offset: 0, 0
+  index: -1
+Siwil
+  rotate: true
+  xy: 221, 343
+  size: 83, 334
+  orig: 83, 334
+  offset: 0, 0
+  index: -1
+SkullBelt1
+  rotate: true
+  xy: 217, 2
+  size: 119, 107
+  orig: 119, 107
+  offset: 0, 0
+  index: -1
+SkullBelt2
+  rotate: true
+  xy: 1511, 593
+  size: 118, 116
+  orig: 118, 116
+  offset: 0, 0
+  index: -1
+Torso_Def
+  rotate: false
+  xy: 1381, 139
+  size: 224, 259
+  orig: 224, 259
+  offset: 0, 0
+  index: -1
+
+Rigging chibi demon girl2.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+FX/Arc
+  rotate: true
+  xy: 2, 2
+  size: 101, 80
+  orig: 128, 128
+  offset: 20, 10
+  index: -1
+FX/ArrowBase
+  rotate: false
+  xy: 2, 235
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+FX/ArrowBaseOuterGlow
+  rotate: false
+  xy: 260, 235
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+FX/BowString
+  rotate: true
+  xy: 84, 69
+  size: 34, 176
+  orig: 47, 183
+  offset: 9, 0
+  index: -1
+FX/BowString2
+  rotate: true
+  xy: 84, 33
+  size: 34, 176
+  orig: 47, 183
+  offset: 9, 0
+  index: -1
+FX/Channel
+  rotate: false
+  xy: 2, 105
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+FX/Circle
+  rotate: false
+  xy: 132, 105
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+FX/Glitter
+  rotate: false
+  xy: 262, 105
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+FX/GlowBlur
+  rotate: false
+  xy: 392, 105
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+FX/Semicircle
+  rotate: false
+  xy: 518, 363
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1

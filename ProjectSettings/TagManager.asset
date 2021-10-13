@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Hitbox
   - Character
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Hitbox
   - Environment
   - EnvironmentOnly
-  - 
+  - Enemy
   - 
   - 
   - 
