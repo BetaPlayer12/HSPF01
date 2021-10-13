@@ -6,4 +6,5 @@ public class HitboxHolder : MonoBehaviour
 {
     [SerializeField]
     private Collider2D DamageableHitBox;
+    public Collider2D SendingHitBox => DamageableHitBox;
 }
