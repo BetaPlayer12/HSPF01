@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6830370191111703392}
   - component: {fileID: 5046268372599012328}
   - component: {fileID: 3603122658617420700}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TrailFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4816,7 +4816,7 @@ GameObject:
   - component: {fileID: 1188421334034552122}
   - component: {fileID: 3878837097871661195}
   - component: {fileID: 4672074746328600543}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4936,7 +4936,7 @@ GameObject:
   - component: {fileID: 3771423768435152663}
   - component: {fileID: 5762477887927922275}
   - component: {fileID: 881245153790827636}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: ArrowProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5035,4 +5035,4 @@ MonoBehaviour:
     type: 3}
   m_layerMask:
     serializedVersion: 2
-    m_Bits: 503
+    m_Bits: 192

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5319900250886783730}
   - component: {fileID: 1429945548719347314}
   - component: {fileID: 3021325220294193034}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: AttackHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 5082318563626561869}
   - component: {fileID: 7134148578192794818}
   - component: {fileID: 6655942743633269824}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: ChibiForg
   m_TagString: Character
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5995153892978813716}
   - component: {fileID: 2581954662379394602}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 1765050638536158464}
   - component: {fileID: 6991917195480400570}
   - component: {fileID: 877298949279849867}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Model
   m_TagString: Hitbox
   m_Icon: {fileID: 0}
@@ -449,7 +449,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4299927598735460450}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -552,7 +552,7 @@ GameObject:
   - component: {fileID: 4797010058251103017}
   - component: {fileID: 6786476702429950730}
   - component: {fileID: 1614611395695951224}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: ExoplosionHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -719,7 +719,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7703687556218506637}
   - component: {fileID: 7046870833668753420}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: CenterMass
   m_TagString: Character
   m_Icon: {fileID: 0}

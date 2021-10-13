@@ -169,7 +169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 830975109591355361}
   - component: {fileID: 2915305379083648948}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,7 +697,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1527207152655134703}
   - component: {fileID: 2167012604777769582}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: CenterMass
   m_TagString: Character
   m_Icon: {fileID: 0}
@@ -1921,7 +1921,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 449199955863110902}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: SkeletonUtility-SkeletonRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2266,7 +2266,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4932897938540538368}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2358,7 +2358,7 @@ GameObject:
   - component: {fileID: 8355742375139065833}
   - component: {fileID: 3625924761203522703}
   - component: {fileID: 293921019021775839}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Model
   m_TagString: Hitbox
   m_Icon: {fileID: 0}
@@ -3141,7 +3141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3236493186675034486}
   - component: {fileID: 6633159868095673416}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3556,7 +3556,7 @@ GameObject:
   - component: {fileID: 2560276036439258658}
   - component: {fileID: 2670432678445989810}
   - component: {fileID: 382002370755536285}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: ChibiArcher
   m_TagString: Character
   m_Icon: {fileID: 0}
