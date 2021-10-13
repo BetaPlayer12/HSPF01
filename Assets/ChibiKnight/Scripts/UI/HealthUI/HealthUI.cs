@@ -1,5 +1,6 @@
 ﻿using ChibiKnight.Systems.Combat;
 using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +18,7 @@ namespace ChibiKnight.Gameplay.UI
         [SerializeField]
         private List<HealthUIElement> m_elements;
 
-        private void Awake()
+        private void Start()
         {
             m_gridLayout.enabled = true;
             m_toTrack.HealthChange += OnHealthChange;
@@ -41,10 +42,12 @@ namespace ChibiKnight.Gameplay.UI
                     m_elements.Add(uiElement);
                 } while (healthValueWithoutUI > 0);
             }
+            StartCoroutine(DelayedGridLayoutDisableRoutine());
         }
 
-        private void Start()
+        private IEnumerator DelayedGridLayoutDisableRoutine()
         {
+            yield return null;
             m_gridLayout.enabled = false;
         }
 
