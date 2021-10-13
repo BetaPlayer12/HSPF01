@@ -171,7 +171,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1672088037}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &8804730657924163426
 CapsuleCollider2D:
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 6842865567184140748}
   - component: {fileID: 2846347991001536118}
   - component: {fileID: 1263451160}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,6 +222,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 580272792735917942}
   - {fileID: 1012094406}
   - {fileID: 1699257058}
   m_Father: {fileID: 7533202215659617742}
@@ -393,7 +394,7 @@ Transform:
   - {fileID: 2075193306}
   - {fileID: 556203433}
   m_Father: {fileID: 1672088037}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2075193305
 GameObject:
@@ -466,6 +467,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_damage: 1
+--- !u!1 &3940841803855563917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 580272792735917942}
+  m_Layer: 0
+  m_Name: HitFXSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &580272792735917942
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3940841803855563917}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.21, y: 7.53, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1672088037}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8543717202821776973
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,6 +603,7 @@ MonoBehaviour:
   jumpPressed: 0
   jumpHeld: 0
   slashPressed: 0
+  ultimateSlashPressed: 0
   walkPressed: 0
   walkHeld: 0
 --- !u!114 &3359547090697474522
@@ -617,11 +649,15 @@ MonoBehaviour:
   angle: 0
   m_groundCheckOffset: 0
   m_highJumpDuration: 0.2
+  m_isFalling: 0
   m_comboCooldown: 1
   m_attackColliders:
-  - {fileID: 613119159}
-  - {fileID: 2075193307}
-  - {fileID: 556203434}
+  - m_collider: {fileID: 613119159}
+    m_attackForce: 50
+  - m_collider: {fileID: 2075193307}
+    m_attackForce: 50
+  - m_collider: {fileID: 556203434}
+    m_attackForce: 100
 --- !u!114 &5921402890112096364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -660,3 +696,5 @@ MonoBehaviour:
   m_aerialKnockBackMultiplier: 1.5
   m_flinchDuration: 0.5
   m_flinchGravityScale: 10
+  m_hitFX: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
+  m_hitFXSpawnPoint: {fileID: 580272792735917942}
