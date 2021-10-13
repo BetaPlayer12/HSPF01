@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonRenderer: {fileID: 4130152814554824520}
-  boneName: L_Hand_Def2
+  boneName: L_Hand_Def3
   followXYPosition: 1
   followZPosition: 0
   followBoneRotation: 0

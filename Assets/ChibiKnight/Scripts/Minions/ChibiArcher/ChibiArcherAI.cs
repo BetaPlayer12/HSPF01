@@ -128,17 +128,19 @@ namespace DChild.Gameplay.Characters.Enemies
 
         public void ActivateAim()
         {
-            m_projectileBone.mode = SkeletonUtilityBone.Mode.Override;
+            if (Vector2.Distance(transform.position, m_target.position) > 5f && transform.position.y != m_target.position.y)
+            {
+                m_projectileBone.mode = SkeletonUtilityBone.Mode.Override;
+            }
 
             if (!IsFacingTarget())
             {
                 CustomTurn();
             }
             Debug.Log("Activate AIM");
-            var boneAimOffset = 1.02f;
-            m_projectileBone.transform.position = new Vector2(m_target.position.x, m_target.position.y * boneAimOffset);
-            var launcherAimOffset = boneAimOffset * 0.99f;
-            m_launcher.AimAt(new Vector2(m_target.position.x, m_target.position.y * launcherAimOffset));
+            var target = m_target.position;
+            m_launcher.AimAt(new Vector2(target.x, target.y + 5f));
+            m_projectileBone.transform.position = new Vector2(target.x, target.y + 10f);
             //var targetPos = new Vector2(m_target.position.x, m_target.position.y + 10f);
         }
 
