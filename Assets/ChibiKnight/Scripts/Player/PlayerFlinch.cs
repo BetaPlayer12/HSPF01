@@ -23,6 +23,10 @@ public class PlayerFlinch : MonoBehaviour
     private float m_flinchDuration;
     [SerializeField]
     private float m_flinchGravityScale;
+    [SerializeField]
+    private GameObject m_hitFX;
+    [SerializeField]
+    private Transform m_hitFXSpawnPoint;
 
     private Rigidbody2D m_rigidBody;
     private SkeletonAnimationHelper m_animator;
@@ -46,6 +50,7 @@ public class PlayerFlinch : MonoBehaviour
     public void Flinch(Vector3 sourcePosition)
     {
         var direction = 0;
+        Instantiate(m_hitFX, m_hitFXSpawnPoint.position, Quaternion.identity);
 
         if (sourcePosition.x > transform.position.x)
         {

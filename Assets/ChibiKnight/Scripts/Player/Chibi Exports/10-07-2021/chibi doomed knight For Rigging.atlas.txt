@@ -1,0 +1,671 @@
+
+chibi doomed knight For Rigging.png
+size: 2612,2612
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+2ndSlash/2nd1 (1)
+  rotate: true
+  xy: 967, 898
+  size: 256, 344
+  orig: 256, 344
+  offset: 0, 0
+  index: -1
+2ndSlash/2nd1 (2)
+  rotate: false
+  xy: 1776, 1427
+  size: 256, 344
+  orig: 256, 344
+  offset: 0, 0
+  index: -1
+2ndSlash/2nd1 (3)
+  rotate: true
+  xy: 1944, 1874
+  size: 256, 344
+  orig: 256, 344
+  offset: 0, 0
+  index: -1
+2ndSlash/2nd1 (4)
+  rotate: true
+  xy: 951, 640
+  size: 256, 344
+  orig: 256, 344
+  offset: 0, 0
+  index: -1
+2ndSlash/2nd1 (5)
+  rotate: true
+  xy: 938, 382
+  size: 256, 344
+  orig: 256, 344
+  offset: 0, 0
+  index: -1
+2ndSlash/2nd1 (6)
+  rotate: false
+  xy: 1720, 1037
+  size: 256, 344
+  orig: 256, 344
+  offset: 0, 0
+  index: -1
+Blur2Atk
+  rotate: false
+  xy: 1944, 2132
+  size: 639, 479
+  orig: 720, 720
+  offset: 58, 46
+  index: -1
+Blur3Atk
+  rotate: false
+  xy: 787, 1750
+  size: 598, 250
+  orig: 720, 360
+  offset: 86, 38
+  index: -1
+BlurAtk
+  rotate: false
+  xy: 1387, 1773
+  size: 512, 256
+  orig: 512, 256
+  offset: 0, 0
+  index: -1
+ChibiDeath/BackPlate_Def
+  rotate: false
+  xy: 1636, 680
+  size: 72, 216
+  orig: 74, 216
+  offset: 1, 0
+  index: -1
+ChibiDeath/BackPlate_Side
+  rotate: false
+  xy: 2509, 1309
+  size: 100, 185
+  orig: 100, 185
+  offset: 0, 0
+  index: -1
+ChibiDeath/BreastPlate_Def
+  rotate: false
+  xy: 2290, 1872
+  size: 270, 258
+  orig: 270, 258
+  offset: 0, 0
+  index: -1
+ChibiDeath/BreastPlate_Side
+  rotate: false
+  xy: 758, 469
+  size: 178, 231
+  orig: 178, 231
+  offset: 0, 0
+  index: -1
+ChibiDeath/Cape_Back
+  rotate: false
+  xy: 967, 1156
+  size: 377, 592
+  orig: 377, 592
+  offset: 0, 0
+  index: -1
+ChibiDeath/Cape_Front
+  rotate: true
+  xy: 1, 17
+  size: 324, 669
+  orig: 324, 669
+  offset: 0, 0
+  index: -1
+ChibiDeath/Head_Def
+  rotate: false
+  xy: 1368, 2031
+  size: 574, 580
+  orig: 574, 580
+  offset: 0, 0
+  index: -1
+ChibiDeath/Head_Side
+  rotate: false
+  xy: 787, 2002
+  size: 579, 609
+  orig: 579, 610
+  offset: 0, 1
+  index: -1
+ChibiDeath/HoodBack_Def
+  rotate: false
+  xy: 1, 343
+  size: 600, 585
+  orig: 600, 585
+  offset: 0, 0
+  index: -1
+ChibiDeath/HoodBack_Side
+  rotate: false
+  xy: 758, 702
+  size: 191, 286
+  orig: 191, 286
+  offset: 0, 0
+  index: -1
+ChibiDeath/HoodFill_Def
+  rotate: false
+  xy: 2524, 1641
+  size: 51, 67
+  orig: 51, 67
+  offset: 0, 0
+  index: -1
+ChibiDeath/HoodFront_Def
+  rotate: false
+  xy: 1, 930
+  size: 730, 835
+  orig: 730, 835
+  offset: 0, 0
+  index: -1
+ChibiDeath/HoodFront_Side
+  rotate: false
+  xy: 1, 1767
+  size: 784, 844
+  orig: 784, 844
+  offset: 0, 0
+  index: -1
+ChibiDeath/L_Arm_Def
+  rotate: false
+  xy: 1703, 155
+  size: 181, 170
+  orig: 181, 170
+  offset: 0, 0
+  index: -1
+ChibiDeath/L_Arm_SIde
+  rotate: false
+  xy: 1703, 436
+  size: 218, 188
+  orig: 218, 188
+  offset: 0, 0
+  index: -1
+ChibiDeath/L_Eye_Def
+  rotate: true
+  xy: 2099, 412
+  size: 66, 129
+  orig: 66, 129
+  offset: 0, 0
+  index: -1
+ChibiDeath/L_Foot_Def
+  rotate: false
+  xy: 1776, 1385
+  size: 127, 40
+  orig: 127, 40
+  offset: 0, 0
+  index: -1
+ChibiDeath/L_Foot_Side
+  rotate: false
+  xy: 2099, 225
+  size: 136, 48
+  orig: 136, 48
+  offset: 0, 0
+  index: -1
+ChibiDeath/L_ForeArm_Def
+  rotate: true
+  xy: 1886, 150
+  size: 175, 166
+  orig: 175, 166
+  offset: 0, 0
+  index: -1
+ChibiDeath/L_ForeArm_Side
+  rotate: true
+  xy: 2402, 418
+  size: 162, 155
+  orig: 162, 155
+  offset: 0, 0
+  index: -1
+ChibiDeath/L_ForeLeg_Def
+  rotate: true
+  xy: 1451, 76
+  size: 143, 155
+  orig: 143, 155
+  offset: 0, 0
+  index: -1
+ChibiDeath/L_ForeLeg_Side
+  rotate: true
+  xy: 2099, 275
+  size: 135, 131
+  orig: 135, 131
+  offset: 0, 0
+  index: -1
+ChibiDeath/L_HandClose_Side
+  rotate: false
+  xy: 2361, 286
+  size: 128, 130
+  orig: 128, 130
+  offset: 0, 0
+  index: -1
+ChibiDeath/L_Hand_Def
+  rotate: true
+  xy: 2494, 1014
+  size: 145, 115
+  orig: 146, 116
+  offset: 1, 1
+  index: -1
+ChibiDeath/L_Hand_Side
+  rotate: true
+  xy: 1860, 5
+  size: 143, 146
+  orig: 143, 146
+  offset: 0, 0
+  index: -1
+ChibiDeath/L_KneeGuard_Def
+  rotate: true
+  xy: 2494, 888
+  size: 124, 113
+  orig: 124, 113
+  offset: 0, 0
+  index: -1
+ChibiDeath/L_KneeGuard_Side
+  rotate: false
+  xy: 1608, 105
+  size: 93, 114
+  orig: 93, 114
+  offset: 0, 0
+  index: -1
+ChibiDeath/L_Leg_Def
+  rotate: true
+  xy: 1282, 233
+  size: 144, 221
+  orig: 144, 221
+  offset: 0, 0
+  index: -1
+ChibiDeath/L_Leg_Side
+  rotate: true
+  xy: 1710, 626
+  size: 151, 236
+  orig: 151, 236
+  offset: 0, 0
+  index: -1
+ChibiDeath/Neck_Def
+  rotate: true
+  xy: 1176, 220
+  size: 160, 104
+  orig: 160, 104
+  offset: 0, 0
+  index: -1
+ChibiDeath/Pauldron_Def
+  rotate: false
+  xy: 2086, 480
+  size: 142, 163
+  orig: 142, 163
+  offset: 0, 0
+  index: -1
+ChibiDeath/Pauldron_Side
+  rotate: false
+  xy: 926, 23
+  size: 198, 192
+  orig: 198, 192
+  offset: 0, 0
+  index: -1
+ChibiDeath/R_Arm_Def
+  rotate: true
+  xy: 758, 261
+  size: 206, 178
+  orig: 206, 178
+  offset: 0, 0
+  index: -1
+ChibiDeath/R_Arm_Side
+  rotate: true
+  xy: 736, 41
+  size: 218, 188
+  orig: 218, 188
+  offset: 0, 0
+  index: -1
+ChibiDeath/R_Eye_Def
+  rotate: true
+  xy: 1926, 329
+  size: 122, 139
+  orig: 122, 139
+  offset: 0, 0
+  index: -1
+ChibiDeath/R_Eye_Side
+  rotate: false
+  xy: 2494, 736
+  size: 86, 150
+  orig: 86, 150
+  offset: 0, 0
+  index: -1
+ChibiDeath/R_Foot_Def
+  rotate: true
+  xy: 1901, 1903
+  size: 126, 41
+  orig: 126, 41
+  offset: 0, 0
+  index: -1
+ChibiDeath/R_Foot_Side
+  rotate: false
+  xy: 1901, 1825
+  size: 131, 47
+  orig: 131, 47
+  offset: 0, 0
+  index: -1
+ChibiDeath/R_ForeArm_Def
+  rotate: true
+  xy: 1542, 221
+  size: 169, 159
+  orig: 169, 159
+  offset: 0, 0
+  index: -1
+ChibiDeath/R_ForeArm_Side
+  rotate: false
+  xy: 2230, 421
+  size: 170, 159
+  orig: 170, 159
+  offset: 0, 0
+  index: -1
+ChibiDeath/R_ForeLeg_Def
+  rotate: true
+  xy: 1703, 10
+  size: 143, 155
+  orig: 143, 155
+  offset: 0, 0
+  index: -1
+ChibiDeath/R_ForeLeg_Side
+  rotate: false
+  xy: 603, 343
+  size: 133, 120
+  orig: 133, 120
+  offset: 0, 0
+  index: -1
+ChibiDeath/R_Hand2_Side
+  rotate: true
+  xy: 2034, 1419
+  size: 204, 215
+  orig: 204, 215
+  offset: 0, 0
+  index: -1
+ChibiDeath/R_HandClose_Side
+  rotate: false
+  xy: 2232, 283
+  size: 127, 136
+  orig: 127, 136
+  offset: 0, 0
+  index: -1
+ChibiDeath/R_Hand_Def
+  rotate: true
+  xy: 2494, 1161
+  size: 146, 115
+  orig: 146, 115
+  offset: 0, 0
+  index: -1
+ChibiDeath/R_Hand_Side
+  rotate: false
+  xy: 2008, 10
+  size: 133, 138
+  orig: 133, 138
+  offset: 0, 0
+  index: -1
+ChibiDeath/R_KneeGuard_Def
+  rotate: true
+  xy: 2494, 612
+  size: 122, 112
+  orig: 123, 112
+  offset: 1, 0
+  index: -1
+ChibiDeath/R_KneeGuard_Side
+  rotate: false
+  xy: 2509, 1496
+  size: 102, 116
+  orig: 102, 116
+  offset: 0, 0
+  index: -1
+ChibiDeath/R_Leg_Def
+  rotate: true
+  xy: 938, 217
+  size: 163, 236
+  orig: 163, 236
+  offset: 0, 0
+  index: -1
+ChibiDeath/R_Leg_Side
+  rotate: false
+  xy: 1542, 392
+  size: 159, 250
+  orig: 159, 250
+  offset: 0, 0
+  index: -1
+ChibiDeath/Spine_Side
+  rotate: false
+  xy: 672, 37
+  size: 62, 304
+  orig: 62, 304
+  offset: 0, 0
+  index: -1
+ChibiDeath/Torso_Def
+  rotate: false
+  xy: 1463, 1383
+  size: 311, 388
+  orig: 311, 388
+  offset: 0, 0
+  index: -1
+ChibiDeath/Torso_Side
+  rotate: false
+  xy: 1463, 1021
+  size: 255, 360
+  orig: 255, 360
+  offset: 0, 0
+  index: -1
+ChibiDeath/WaisArmor_Side
+  rotate: true
+  xy: 1297, 637
+  size: 259, 171
+  orig: 259, 171
+  offset: 0, 0
+  index: -1
+ChibiDeath/WaistArmor_Def
+  rotate: true
+  xy: 1470, 644
+  size: 252, 164
+  orig: 252, 164
+  offset: 0, 0
+  index: -1
+ChibiDeath/WaistPadBack_Side
+  rotate: true
+  xy: 1542, 898
+  size: 121, 176
+  orig: 121, 176
+  offset: 0, 0
+  index: -1
+ChibiDeath/WaistPadFront_Def
+  rotate: false
+  xy: 1126, 26
+  size: 147, 189
+  orig: 147, 189
+  offset: 0, 0
+  index: -1
+ChibiDeath/WaistPadFront_Side
+  rotate: true
+  xy: 1703, 327
+  size: 107, 221
+  orig: 107, 221
+  offset: 0, 0
+  index: -1
+ChibiDeath/WaistPad_Def
+  rotate: true
+  xy: 1282, 99
+  size: 132, 167
+  orig: 132, 167
+  offset: 0, 0
+  index: -1
+ChibiDeath/WaistPad_Side
+  rotate: false
+  xy: 1923, 453
+  size: 161, 171
+  orig: 161, 171
+  offset: 0, 0
+  index: -1
+ChibiDeath/sword front
+  rotate: false
+  xy: 733, 990
+  size: 232, 758
+  orig: 232, 758
+  offset: 0, 0
+  index: -1
+ChibiDeath/sword side
+  rotate: false
+  xy: 1346, 1005
+  size: 115, 743
+  orig: 115, 743
+  offset: 0, 0
+  index: -1
+Ring
+  rotate: false
+  xy: 2034, 1625
+  size: 230, 247
+  orig: 600, 300
+  offset: 207, 21
+  index: -1
+Shine/Shine00000
+  rotate: true
+  xy: 2562, 1970
+  size: 160, 43
+  orig: 720, 360
+  offset: 115, 147
+  index: -1
+Shine/Shine00001
+  rotate: true
+  xy: 2524, 1710
+  size: 160, 43
+  orig: 720, 360
+  offset: 115, 147
+  index: -1
+Shine/Shine00002
+  rotate: false
+  xy: 1275, 54
+  size: 160, 43
+  orig: 720, 360
+  offset: 115, 147
+  index: -1
+Shine/Shine00003
+  rotate: false
+  xy: 1275, 9
+  size: 160, 43
+  orig: 720, 360
+  offset: 115, 147
+  index: -1
+Shine/Shine00004
+  rotate: false
+  xy: 1437, 31
+  size: 160, 43
+  orig: 720, 360
+  offset: 115, 147
+  index: -1
+Shine/Shine00005
+  rotate: true
+  xy: 2559, 450
+  size: 160, 43
+  orig: 720, 360
+  offset: 115, 147
+  index: -1
+Shine/Shine00006
+  rotate: true
+  xy: 2054, 167
+  size: 160, 43
+  orig: 720, 360
+  offset: 115, 147
+  index: -1
+Shine/Shine00007
+  rotate: false
+  xy: 2099, 180
+  size: 160, 43
+  orig: 720, 360
+  offset: 115, 147
+  index: -1
+Shine/Shine00008
+  rotate: true
+  xy: 2491, 256
+  size: 160, 43
+  orig: 720, 360
+  offset: 115, 147
+  index: -1
+Shine/Shine00009
+  rotate: true
+  xy: 2536, 256
+  size: 160, 43
+  orig: 720, 360
+  offset: 115, 147
+  index: -1
+Shine/Shine00010
+  rotate: true
+  xy: 2143, 18
+  size: 160, 43
+  orig: 720, 360
+  offset: 115, 147
+  index: -1
+Shine/Shine00011
+  rotate: true
+  xy: 2188, 18
+  size: 160, 43
+  orig: 720, 360
+  offset: 115, 147
+  index: -1
+Slash/1
+  rotate: false
+  xy: 2266, 1614
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+Slash/10
+  rotate: false
+  xy: 1284, 379
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+Slash/2
+  rotate: false
+  xy: 2251, 1356
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+Slash/3
+  rotate: false
+  xy: 1978, 1161
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+Slash/4
+  rotate: false
+  xy: 2236, 1098
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+Slash/5
+  rotate: false
+  xy: 1978, 903
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+Slash/6
+  rotate: false
+  xy: 2236, 840
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+Slash/7
+  rotate: false
+  xy: 1720, 779
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+Slash/8
+  rotate: false
+  xy: 1978, 645
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+Slash/9
+  rotate: false
+  xy: 2236, 582
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+thrust
+  rotate: true
+  xy: 603, 465
+  size: 463, 153
+  orig: 600, 300
+  offset: 39, 26
+  index: -1

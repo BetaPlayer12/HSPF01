@@ -49,7 +49,7 @@ namespace DChild.Gameplay.Characters.AI
         [SerializeField, TabGroup("Physics")]
         private float m_groundCheckOffset;
 
-        private Transform m_target;
+        protected Transform m_target;
 
         private ContactFilter2D m_filter;
         private List<Collider2D> m_colliderList;

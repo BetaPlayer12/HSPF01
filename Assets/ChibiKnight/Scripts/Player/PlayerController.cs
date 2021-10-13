@@ -36,14 +36,19 @@ public class PlayerController : MonoBehaviour
     private float angle;
     [SerializeField]
     private float m_groundCheckOffset;
+    private bool m_previouslyAirborne = false;
 
     //Jump
     [SerializeField]
     private float m_highJumpDuration;
+    [SerializeField]
+    private bool m_isFalling = false;
 
     //Attacks
     [SerializeField]
-    private List<Collider2D> m_attackColliders;
+    private float m_comboCooldown;
+    [SerializeField]
+    private List<AttackInfo> m_attackColliders;
     private bool m_canAttack = true;
     private int m_currentCombo = 1;
 
@@ -53,6 +58,7 @@ public class PlayerController : MonoBehaviour
     private float m_highJumpCurrentTimer;
     private bool m_canHighJump = true;
     private float m_originalMoveSpeed;
+    private float m_comboCooldownTimer;
 
     private void Start()
     {
@@ -62,6 +68,11 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         EvaluateGroundedness();
+
+        if (m_state.isAttacking == false)
+        {
+            HandleAttackComboCooldown();
+        }
 
         if (m_state.waitForBehaviour)
         {
@@ -78,11 +89,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-
-    }
-
     private void Initialize()
     {
         m_rigidbody = GetComponent<Rigidbody2D>();
@@ -96,6 +102,7 @@ public class PlayerController : MonoBehaviour
 
         m_highJumpCurrentTimer = m_highJumpDuration;
         m_originalMoveSpeed = m_movementSpeed;
+        m_comboCooldownTimer = m_comboCooldown;
     }
 
     private void HandleGroundBehaviour()
@@ -120,10 +127,6 @@ public class PlayerController : MonoBehaviour
         {
             HandleJump();
         }
-        //else if (m_input.horizontalInput == 0)
-        //{
-        //    HandleIdle();
-        //}
         else
         {
             HandleMovement(m_input.horizontalInput);
@@ -134,15 +137,13 @@ public class PlayerController : MonoBehaviour
             if (m_input.slashPressed)
             {
                 Debug.Log("Slash Pressed");
-                PrepareAttack();
                 HandleAttack();
             }
+            else if (m_input.ultimateSlashPressed)
+            {
+                HandleUltimateSlash();
+            }
         }
-    }
-
-    private void PrepareAttack()
-    {
-
     }
 
     private void HandleAerialBehaviour()
@@ -164,7 +165,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement(float direction)
     {
-        if (direction == 0)
+        if (direction == 0 && m_state.isGrounded)
         {
             if (m_state.isGrounded)
             {
@@ -184,6 +185,26 @@ public class PlayerController : MonoBehaviour
                     m_animator.SetAnimation(0, "Run_inPlace", true);
                 }
             }
+            else
+            {
+                if (m_rigidbody.velocity.y > 0)
+                {
+                    m_animator.SetAnimation(0, "Jump_1Rise_Loop", true, 0);
+                }
+                else if (m_rigidbody.velocity.y < 0)
+                {
+                    if (m_isFalling == false)
+                    {
+                        m_isFalling = true;
+                        m_animator.SetAnimation(0, "Jump_2RisetoFalling", false, 0);
+                        m_animator.skeletonAnimation.state.Complete += JumpRiseToFallingState_Complete;
+                    }
+                    else
+                    {
+                        //m_animator.SetAnimation(0, "Jump_3Fall_Loop", true, 0);
+                    }
+                }
+            }
         }
 
         var xVelocity = m_movementSpeed * direction;
@@ -198,14 +219,18 @@ public class PlayerController : MonoBehaviour
     private void HandleJump()
     {
         m_state.isHighJumping = true;
-        m_animator.SetAnimation(0, "Jump_1Rise", false, 0);
+        m_animator.SetAnimation(0, "Jump_1Rise_Loop", false, 0);
         m_rigidbody.velocity = new Vector2(m_rigidbody.velocity.x, m_jumpPower);
         m_highJumpCurrentTimer = m_highJumpDuration;
+
+        //Reset combo
+        m_currentCombo = 1;
+        m_comboCooldownTimer = m_comboCooldown;
     }
 
     private void HandleHighJump()
     {
-        m_animator.SetAnimation(0, "Jump_1Rise", false, 0);
+        //m_animator.SetAnimation(0, "Jump_1Rise", false, 0);
         m_highJumpCurrentTimer -= Time.deltaTime;
 
         if (m_highJumpCurrentTimer <= 0)
@@ -222,21 +247,24 @@ public class PlayerController : MonoBehaviour
     private void HandleAttack()
     {
         m_state.isAttacking = true;
+        m_state.waitForBehaviour = true;
+
+        m_rigidbody.velocity = Vector2.zero;
 
         if (m_currentCombo == 1)
         {
             m_animator.SetAnimation(0, "Attack1", false, 0);
-            m_attackColliders[m_currentCombo - 1].enabled = true;
+            m_attackColliders[m_currentCombo - 1].m_collider.enabled = true;
         }
         else if (m_currentCombo == 2)
         {
             m_animator.SetAnimation(0, "Attack2", false, 0);
-            m_attackColliders[m_currentCombo - 1].enabled = true;
+            m_attackColliders[m_currentCombo - 1].m_collider.enabled = true;
         }
         else if (m_currentCombo == 3)
         {
             m_animator.SetAnimation(0, "Attack3", false, 0);
-            m_attackColliders[m_currentCombo - 1].enabled = true;
+            m_attackColliders[m_currentCombo - 1].m_collider.enabled = true;
         }
 
         m_currentCombo++;
@@ -246,7 +274,41 @@ public class PlayerController : MonoBehaviour
             m_currentCombo = 1;
         }
 
-        m_animator.skeletonAnimation.state.Complete += State_Complete;
+        m_comboCooldownTimer = m_comboCooldown;
+        m_rigidbody.AddForce(new Vector2(transform.localScale.x * m_attackColliders[m_currentCombo - 1].m_attackForce, 0), ForceMode2D.Force);
+        m_animator.skeletonAnimation.state.Complete += AttackState_Complete;
+    }
+
+    private void HandleAttackComboCooldown()
+    {
+        m_comboCooldownTimer -= Time.deltaTime;
+
+        if (m_comboCooldownTimer <= 0)
+        {
+            m_currentCombo = 1;
+            m_comboCooldownTimer = m_comboCooldown;
+        }
+    }
+
+    private void HandleUltimateSlash()
+    {
+        m_state.isAttacking = true;
+        m_state.waitForBehaviour = true;
+
+        m_animator.SetAnimation(0, "Attack1", false, 0);
+        m_attackColliders[0].m_collider.enabled = true;
+
+        m_animator.skeletonAnimation.state.Complete += UltimateAttackState_Complete;
+
+        m_animator.SetAnimation(0, "Attack2", false, 0);
+        m_attackColliders[1].m_collider.enabled = true;
+
+        m_animator.skeletonAnimation.state.Complete += UltimateAttackState_Complete;
+
+        m_animator.SetAnimation(0, "Attack3", false, 0);
+        m_attackColliders[1].m_collider.enabled = true;
+
+        m_animator.skeletonAnimation.state.Complete += UltimateAttackEndState_Complete;
     }
 
     private void HandleFacing(float direction)
@@ -265,12 +327,24 @@ public class PlayerController : MonoBehaviour
         int groundColliderResult = Physics2D.OverlapBox(m_origin + (Vector2)transform.position, boxSize, angle, m_filter, m_colliderList);
         var isGrounded = groundColliderResult > 0 ? true : false;
 
+        if (m_state.isGrounded == false)
+        {
+            if (isGrounded == true)
+            {
+                m_rigidbody.velocity = Vector2.zero;
+                m_state.waitForBehaviour = true;
+                m_animator.SetAnimation(0, "Jump_4LandHard", false);
+                m_animator.skeletonAnimation.state.Complete += LandState_Complete;
+            }
+        }
+
         m_state.isGrounded = isGrounded;
 
         if (isGrounded == true)
         {
             m_rigidbody.sharedMaterial = m_groundedPhysicsMaterial;
             m_canHighJump = true;
+            m_isFalling = false;
         }
         else
         {
@@ -284,14 +358,51 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireCube(m_origin + (Vector2)transform.position, boxSize);
     }
 
-    private void State_Complete(Spine.TrackEntry trackEntry)
+    private void AttackState_Complete(Spine.TrackEntry trackEntry)
     {
         m_state.isAttacking = false;
-        m_animator.skeletonAnimation.state.Complete -= State_Complete;
+        m_state.waitForBehaviour = false;
+
+        m_animator.skeletonAnimation.state.Complete -= AttackState_Complete;
 
         for (int i = 0; i < m_attackColliders.Count; i++)
         {
-            m_attackColliders[i].enabled = false;
+            m_attackColliders[i].m_collider.enabled = false;
         }
+    }
+
+    private void JumpRiseToFallingState_Complete(Spine.TrackEntry trackEntry)
+    {
+        m_animator.skeletonAnimation.state.Complete -= JumpRiseToFallingState_Complete;
+        m_animator.SetAnimation(0, "Jump_3Fall_Loop", true, 0);
+    }
+
+    private void LandState_Complete(Spine.TrackEntry trackEntry)
+    {
+        m_animator.skeletonAnimation.state.Complete -= LandState_Complete;
+        m_state.waitForBehaviour = false;
+    }
+
+    private void UltimateAttackState_Complete(Spine.TrackEntry trackEntry)
+    {
+        m_animator.skeletonAnimation.state.Complete -= AttackState_Complete;
+
+        for (int i = 0; i < m_attackColliders.Count; i++)
+        {
+            m_attackColliders[i].m_collider.enabled = false;
+        }
+    }
+
+    private void UltimateAttackEndState_Complete(Spine.TrackEntry trackEntry)
+    {
+        m_animator.skeletonAnimation.state.Complete -= UltimateAttackEndState_Complete;
+
+        for (int i = 0; i < m_attackColliders.Count; i++)
+        {
+            m_attackColliders[i].m_collider.enabled = false;
+        }
+
+        m_state.isAttacking = false;
+        m_state.waitForBehaviour = false;
     }
 }

@@ -65,14 +65,11 @@ namespace DChild.Gameplay.Characters
         {
             m_animator.SetEmptyAnimation(1, 0);
             Instantiate(m_hitFX, m_centerMass.position, Quaternion.identity);
+            m_animator.SetAnimation(1, m_flinchFXAnimation, false, 0).MixDuration = 0;
 
             if (m_isFlinching == false)
             {
                 StartFlinch();
-            }
-            else
-            {
-                m_animator.SetAnimation(1, m_flinchFXAnimation, false, 0).MixDuration = 0;
             }
         }
 
