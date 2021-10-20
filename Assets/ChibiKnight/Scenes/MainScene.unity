@@ -6812,6 +6812,85 @@ Transform:
   m_Father: {fileID: 1028431542}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &490003756
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 519603115008231162, guid: 24900f43c0b8f2a468e24f1f4ef0e504,
+        type: 3}
+      propertyPath: m_Name
+      value: ChibiBlob
+      objectReference: {fileID: 0}
+    - target: {fileID: 519603115008231162, guid: 24900f43c0b8f2a468e24f1f4ef0e504,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813875604823817593, guid: 24900f43c0b8f2a468e24f1f4ef0e504,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813875604823817593, guid: 24900f43c0b8f2a468e24f1f4ef0e504,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 933.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813875604823817593, guid: 24900f43c0b8f2a468e24f1f4ef0e504,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 647.8611
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813875604823817593, guid: 24900f43c0b8f2a468e24f1f4ef0e504,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813875604823817593, guid: 24900f43c0b8f2a468e24f1f4ef0e504,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813875604823817593, guid: 24900f43c0b8f2a468e24f1f4ef0e504,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813875604823817593, guid: 24900f43c0b8f2a468e24f1f4ef0e504,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813875604823817593, guid: 24900f43c0b8f2a468e24f1f4ef0e504,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813875604823817593, guid: 24900f43c0b8f2a468e24f1f4ef0e504,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813875604823817593, guid: 24900f43c0b8f2a468e24f1f4ef0e504,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813875604823817593, guid: 24900f43c0b8f2a468e24f1f4ef0e504,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189621926042044767, guid: 24900f43c0b8f2a468e24f1f4ef0e504,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 24900f43c0b8f2a468e24f1f4ef0e504, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -14105,6 +14184,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ChibiArcher
+      objectReference: {fileID: 0}
+    - target: {fileID: 5746630086336098531, guid: d247cecec735546429251649141bb675,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5898043820215831392, guid: d247cecec735546429251649141bb675,
         type: 3}

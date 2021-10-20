@@ -185,7 +185,7 @@ MonoBehaviour:
   m_attackAnimation: Attack
   m_deathAnimation: Death
   m_moveAnimation: Move
-  m_attackRange: 10
+  m_attackRange: 25
   m_attackTime: 0.5
   m_rootMotion: {fileID: 4252434548554828272}
   m_turnHandle: {fileID: 429691054715754981}
@@ -219,7 +219,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2482624810194743042}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3986206, y: 2.99823, z: 0}
+  m_LocalPosition: {x: 0.39860028, y: 2.99823, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7213769061264457583}
@@ -660,7 +660,7 @@ Transform:
   m_GameObject: {fileID: 8189621926042044755}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 901578989700979737}
   - {fileID: 5781246742653362664}

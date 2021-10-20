@@ -146,9 +146,9 @@ namespace DChild.Gameplay.Characters.Enemies
             }
             m_rootMotion.enabled = true;
             m_physics.velocity = Vector2.zero;
-            m_attackBB.enabled = false;
             m_animation.animationState.TimeScale = 1;
             yield return new WaitForAnimationComplete(m_animation.animationState, m_attackAnimation);
+            m_attackBB.enabled = false;
             m_stateHandle.ApplyQueuedState();
             yield return null;
         }
