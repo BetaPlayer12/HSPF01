@@ -21,4 +21,7 @@ public class CharacterState : MonoBehaviour
     [SerializeField, ReadOnly]
     private bool m_waitForBehaviour;
     public bool waitForBehaviour { get => m_waitForBehaviour; set => m_waitForBehaviour = value; }
+    [SerializeField, ReadOnly]
+    private bool m_isDead;
+    public bool isDead { get => m_isDead; set => m_isDead = value; }
 }
