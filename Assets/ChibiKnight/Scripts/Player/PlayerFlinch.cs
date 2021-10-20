@@ -96,11 +96,12 @@ public class PlayerFlinch : MonoBehaviour
 
         m_rigidBody.velocity = Vector2.zero;
         m_rigidBody.AddForce(new Vector2(direction.x * knockBackPower, direction.y * aerialKnockBackPower), ForceMode2D.Impulse);
-        m_animator.SetAnimation(0, "Flinch1", true);
+        m_animator.SetAnimation(0, "Flinch2", false);
         //m_animator.SetInteger(m_flinchStateAnimationParameter, flinchState);
 
         yield return new WaitForSeconds(m_flinchDuration);
-        m_animator.SetAnimation(0, "Idle1", true);
+        //m_animator.SetAnimation(0, "Idle1", true);
+
         m_state.waitForBehaviour = false;
         m_rigidBody.gravityScale = playerGravityScale;
     }

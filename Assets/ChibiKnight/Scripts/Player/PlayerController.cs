@@ -1,4 +1,5 @@
 using ChibiKnight.Gameplay;
+using ChibiKnight.Systems.Combat;
 using Sirenix.OdinInspector;
 using Spine.Unity;
 using System;
@@ -52,6 +53,15 @@ public class PlayerController : MonoBehaviour
     private bool m_canAttack = true;
     private int m_currentCombo = 1;
 
+    //Death
+    [SerializeField]
+    private float m_deathX;
+    [SerializeField]
+    private float m_deathY;
+    [SerializeField]
+    private float m_deathTimer;
+    private float m_currentDeathTimer;
+
     private Rigidbody2D m_rigidbody;
     private ContactFilter2D m_filter;
     private List<Collider2D> m_colliderList;
@@ -59,6 +69,7 @@ public class PlayerController : MonoBehaviour
     private bool m_canHighJump = true;
     private float m_originalMoveSpeed;
     private float m_comboCooldownTimer;
+    private Damageable m_damageable;
 
     private void Start()
     {
@@ -67,6 +78,18 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (m_state.isDead)
+        {
+            m_currentDeathTimer -= Time.deltaTime;
+
+            if (m_currentDeathTimer <= 0)
+            {
+                Destroy(gameObject);
+            }
+
+            return;
+        }
+
         EvaluateGroundedness();
 
         if (m_state.isAttacking == false)
@@ -92,6 +115,7 @@ public class PlayerController : MonoBehaviour
     private void Initialize()
     {
         m_rigidbody = GetComponent<Rigidbody2D>();
+        m_damageable = GetComponent<Damageable>();
 
         //Ground Check Stuff
         m_filter = new ContactFilter2D();
@@ -103,6 +127,9 @@ public class PlayerController : MonoBehaviour
         m_highJumpCurrentTimer = m_highJumpDuration;
         m_originalMoveSpeed = m_movementSpeed;
         m_comboCooldownTimer = m_comboCooldown;
+
+        m_damageable.OnDeath2 += HandleDeath;
+        m_currentDeathTimer = m_deathTimer;
     }
 
     private void HandleGroundBehaviour()
@@ -197,6 +224,7 @@ public class PlayerController : MonoBehaviour
                     {
                         m_isFalling = true;
                         m_animator.SetAnimation(0, "Jump_2RisetoFalling", false, 0);
+                        m_rigidbody.velocity = new Vector2(m_rigidbody.velocity.x, -10f);
                         m_animator.skeletonAnimation.state.Complete += JumpRiseToFallingState_Complete;
                     }
                     else
@@ -322,6 +350,46 @@ public class PlayerController : MonoBehaviour
         m_rigidbody.velocity = Vector2.zero;
     }
 
+    private void HandleDeath(Vector3 sourcePosition)
+    {
+        //m_state.waitForBehaviour = true;
+        //m_state.isDead = true;
+        //m_rigidbody.gravityScale = 0;
+        //m_rigidbody.velocity = Vector2.zero;
+        //m_rigidbody.AddForce(new Vector2(m_rigidbody.velocity.x, m_deathY), ForceMode2D.Impulse);
+        //m_animator.SetAnimation(0, "Flinch1", true);
+
+        var direction = 0;
+        Vector2 knockBackDirection = Vector2.zero;
+
+        if (sourcePosition.x > transform.position.x)
+        {
+            direction = -1;
+        }
+        else
+        {
+            direction = 1;
+        }
+
+        knockBackDirection.x = direction;
+        knockBackDirection.y = 1;
+        Debug.Log("Dead dead");
+        m_state.waitForBehaviour = true;
+        m_state.isDead = true;
+        //m_rigidbody.gravityScale = 0;
+        //m_rigidbody.velocity = Vector2.zero;
+        //m_rigidbody.AddForce(new Vector2(m_rigidbody.velocity.x, m_deathY), ForceMode2D.Impulse);
+        //m_animator.SetAnimation(0, "Flinch1", true);
+
+        m_rigidbody.gravityScale = 10;
+        m_rigidbody.drag = 0;
+
+        m_rigidbody.velocity = Vector2.zero;
+        m_rigidbody.AddForce(new Vector2(knockBackDirection.x * m_deathX, knockBackDirection.y * m_deathY), ForceMode2D.Impulse);
+        m_animator.SetAnimation(0, "Flinch1", true);
+        m_animator.skeletonAnimation.state.Complete += FlinchState_Complete;
+    }
+
     private void EvaluateGroundedness()
     {
         int groundColliderResult = Physics2D.OverlapBox(m_origin + (Vector2)transform.position, boxSize, angle, m_filter, m_colliderList);
@@ -329,13 +397,22 @@ public class PlayerController : MonoBehaviour
 
         if (m_state.isGrounded == false)
         {
-            if (isGrounded == true)
-            {
-                m_rigidbody.velocity = Vector2.zero;
-                m_state.waitForBehaviour = true;
-                m_animator.SetAnimation(0, "Jump_4LandHard", false);
-                m_animator.skeletonAnimation.state.Complete += LandState_Complete;
-            }
+            //if (isGrounded == true)
+            //{
+            //    m_state.waitForBehaviour = true;
+
+            //    if (m_rigidbody.velocity.y <= -50f)
+            //    {
+            //        m_animator.SetAnimation(0, "Jump_4Land", false);
+            //    }
+            //    else
+            //    {
+            //        m_animator.SetAnimation(0, "Jump_4LandHard", false);
+            //    }
+
+            //    m_rigidbody.velocity = Vector2.zero;
+            //    m_animator.skeletonAnimation.state.Complete += LandState_Complete;
+            //}
         }
 
         m_state.isGrounded = isGrounded;
@@ -356,6 +433,11 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(m_origin + (Vector2)transform.position, boxSize);
+    }
+
+    private void FlinchState_Complete(Spine.TrackEntry trackEntry)
+    {
+
     }
 
     private void AttackState_Complete(Spine.TrackEntry trackEntry)
