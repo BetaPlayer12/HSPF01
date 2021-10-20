@@ -9,7 +9,7 @@ using System;
 
 namespace DChild.Gameplay.Characters.Enemies
 {
-    public class ChibiArcherAI : CombatAIBrain
+    public class ChibiBlobAI : CombatAIBrain
     {
         [SerializeField, Spine.Unity.SpineAnimation(dataField = "m_skeletonAnimation"), TabGroup("Animation")]
         private string m_idleAnimation;
@@ -19,17 +19,16 @@ namespace DChild.Gameplay.Characters.Enemies
         private string m_deathAnimation;
         [SerializeField, Spine.Unity.SpineAnimation(dataField = "m_skeletonAnimation"), TabGroup("Animation")]
         private string m_moveAnimation;
-        [SerializeField, Spine.Unity.SpineAnimation(dataField = "m_skeletonAnimation"), TabGroup("Animation")]
-        private string m_turnAnimation;
 
         [SerializeField, TabGroup("AttackStats")]
         private float m_attackRange;
+        [SerializeField, TabGroup("AttackStats")]
+        private float m_attackTime;
 
         private enum State
         {
             Detect,
             Idle,
-            Turning,
             Attacking,
             Cooldown,
             Chasing,
@@ -42,24 +41,23 @@ namespace DChild.Gameplay.Characters.Enemies
             [HideInInspector]
             _COUNT
         }
-
-        [SerializeField, TabGroup("Reference")]
-        private ProjectileLauncher m_launcher;
+        
         [SerializeField, TabGroup("Modules")]
         private SkeletonRootMotion m_rootMotion;
         [SerializeField, TabGroup("Modules")]
         private AnimatedTurnHandle m_turnHandle;
-
-        [SerializeField, TabGroup("Bone")]
-        private SkeletonUtilityBone m_projectileBone;
+        [SerializeField, TabGroup("Hitbox")]
+        private Collider2D m_hitbox;
+        [SerializeField, TabGroup("Hurtbox")]
+        private Collider2D m_explosionBB;
+        [SerializeField, TabGroup("Hurtbox")]
+        private Collider2D m_attackBB;
 
         private float m_currentCD;
         private float m_currentFullCD;
 
         [ShowInInspector]
         private StateHandle<State> m_stateHandle;
-
-        private State m_turnState;
 
         private Coroutine m_attackRoutine;
 
@@ -71,7 +69,6 @@ namespace DChild.Gameplay.Characters.Enemies
 
         private void OnTurnDone(object sender, FacingEventArgs eventArgs)
         {
-            m_flinch.CanFlinch(true);
             m_stateHandle.ApplyQueuedState();
         }
 
@@ -80,6 +77,28 @@ namespace DChild.Gameplay.Characters.Enemies
             transform.localScale = new Vector3(-transform.localScale.x, 1, 1);
             m_character.SetFacing(transform.localScale.x == 1 ? HorizontalDirection.Right : HorizontalDirection.Left);
         }
+
+
+        //protected override void OnDestroyed(object sender, EventActionArgs eventArgs)
+        //{
+        //    //m_Audiosource.clip = m_DeadClip;
+        //    //m_Audiosource.Play();
+        //    StopAllCoroutines();
+        //    base.OnDestroyed(sender, eventArgs);
+        //    m_stateHandle.OverrideState(State.WaitBehaviourEnd);
+        //    if (m_attackRoutine != null)
+        //    {
+        //        StopCoroutine(m_attackRoutine);
+        //    }
+        //    if (m_sneerRoutine != null)
+        //    {
+        //        StopCoroutine(m_sneerRoutine);
+        //    }
+        //    m_character.physics.UseStepClimb(true);
+        //    m_movement.Stop();
+        //    m_animation.SetEmptyAnimation(0, 0);
+        //    StartCoroutine(ResurrectRoutine());
+        //}
 
         private void OnFlinchStart(object sender, EventActionArgs eventArgs)
         {
@@ -104,10 +123,32 @@ namespace DChild.Gameplay.Characters.Enemies
 
         private IEnumerator AttackRoutine()
         {
-            m_flinch.CanFlinch(false);
-            m_animation.SetAnimation(0, m_attackAnimation, false);
+            m_animation.SetAnimation(0, m_attackAnimation, false).MixDuration = 0;
+            m_attackBB.enabled = true;
+            //yield return new WaitForSeconds(.75f);
+            var target = m_target.position;
+            //while (Vector2.Distance(transform.position, target) > 1f)
+            //{
+            //    m_physics.velocity = new Vector2(transform.right.x * m_attackMoveSpeed, m_physics.velocity.y);
+            //    yield return null;
+            //}
+            var targetDistance = Vector2.Distance(target, transform.position);
+            var velocity = (targetDistance / m_attackTime) * transform.localScale.x;
+            float time = 0;
+            float animTime = 1 / (m_attackTime / 0.75f);
+            m_animation.animationState.TimeScale = animTime;
+            m_rootMotion.enabled = false;
+            while (time < m_attackTime)
+            {
+                m_physics.velocity = new Vector2(velocity, m_physics.velocity.y);
+                time += Time.deltaTime;
+                yield return null;
+            }
+            m_rootMotion.enabled = true;
+            m_physics.velocity = Vector2.zero;
+            m_attackBB.enabled = false;
+            m_animation.animationState.TimeScale = 1;
             yield return new WaitForAnimationComplete(m_animation.animationState, m_attackAnimation);
-            m_flinch.CanFlinch(true);
             m_stateHandle.ApplyQueuedState();
             yield return null;
         }
@@ -115,6 +156,10 @@ namespace DChild.Gameplay.Characters.Enemies
         private IEnumerator DeathRoutine()
         {
             m_animation.SetAnimation(0, m_deathAnimation, false);
+            yield return new WaitForSeconds(.25f);
+            m_explosionBB.enabled = true;
+            yield return new WaitForSeconds(.25f);
+            m_explosionBB.enabled = false;
             yield return new WaitForAnimationComplete(m_animation.animationState, m_deathAnimation);
             this.gameObject.SetActive(false);
             yield return null;
@@ -126,40 +171,10 @@ namespace DChild.Gameplay.Characters.Enemies
             m_stateHandle.SetState(State.Detect);
         }
 
-        public void ActivateAim()
-        {
-            if (Vector2.Distance(transform.position, m_target.position) > 5f && transform.position.y != m_target.position.y)
-            {
-                m_projectileBone.mode = SkeletonUtilityBone.Mode.Override;
-            }
-
-            if (!IsFacingTarget())
-            {
-                CustomTurn();
-            }
-            Debug.Log("Activate AIM");
-            var target = m_target.position;
-            m_launcher.AimAt(new Vector2(target.x, target.y + 5f));
-            m_projectileBone.transform.position = new Vector2(target.x, target.y + 10f);
-            //var targetPos = new Vector2(m_target.position.x, m_target.position.y + 10f);
-        }
-
-        public void DeactivateAim()
-        {
-            m_projectileBone.mode = SkeletonUtilityBone.Mode.Follow;
-            //StartCoroutine(DeactivateAimRoutine());
-        }
-
-        //private IEnumerator DeactivateAimRoutine()
-        //{
-        //    yield return new WaitForSeconds(0.2f);
-        //    m_projectileBone.mode = SkeletonUtilityBone.Mode.Follow;
-        //    yield return null;
-        //}
-
         protected override void Start()
         {
             base.Start();
+            m_flinch.CanFlinch(false);
             m_currentFullCD = UnityEngine.Random.Range(.5f, 2f);
         }
 
@@ -175,8 +190,11 @@ namespace DChild.Gameplay.Characters.Enemies
 
         private void Death()
         {
+            m_hitbox.enabled = false;
             m_flinch.gameObject.SetActive(false);
             enabled = false;
+            m_animation.SetEmptyAnimation(0, 0);
+            m_animation.SetEmptyAnimation(1, 0);
             m_stateHandle.Wait(State.Detect);
             if (m_attackRoutine != null)
             {
@@ -200,9 +218,7 @@ namespace DChild.Gameplay.Characters.Enemies
                     }
                     else
                     {
-                        m_turnState = State.Detect;
-                        if (m_animation.GetCurrentAnimation(0).ToString() != m_turnAnimation)
-                            m_stateHandle.SetState(State.Turning);
+                        CustomTurn();
                     }
                     break;
 
@@ -210,16 +226,10 @@ namespace DChild.Gameplay.Characters.Enemies
                     m_animation.SetAnimation(0, m_idleAnimation, true);
                     break;
 
-                case State.Turning:
-                    m_stateHandle.Wait(m_turnState);
-                    m_flinch.CanFlinch(false);
-                    m_turnHandle.Execute(m_turnAnimation, m_idleAnimation);
-                    break;
-
                 case State.Attacking:
                     m_stateHandle.Wait(State.Cooldown);
 
-                    m_rootMotion.transformPositionX = true;
+                    m_rootMotion.transformPositionX = false;
                     var attack = Attack.Attack;
                     switch (attack)
                     {
@@ -234,9 +244,7 @@ namespace DChild.Gameplay.Characters.Enemies
                     //m_stateHandle.Wait(State.ReevaluateSituation);
                     if (!IsFacingTarget())
                     {
-                        m_turnState = State.Cooldown;
-                        if (m_animation.GetCurrentAnimation(0).ToString() != m_turnAnimation)
-                            m_stateHandle.SetState(State.Turning);
+                        CustomTurn();
                     }
                     else
                     {
@@ -260,7 +268,6 @@ namespace DChild.Gameplay.Characters.Enemies
                         Debug.Log("Facing Target " + IsFacingTarget());
                         if (IsFacingTarget())
                         {
-                            m_rootMotion.transformPositionX = true;
                             if (IsTargetInRange(m_attackRange))
                             {
                                 m_physics.velocity = Vector2.zero;
@@ -273,7 +280,7 @@ namespace DChild.Gameplay.Characters.Enemies
                                 if (m_state.isGrounded)
                                 {
                                     m_animation.SetAnimation(0, m_moveAnimation, true);
-                                    //m_movement.MoveTowards(Vector2.one * transform.localScale.x, m_info.move.speed);
+                                    //m_physics.velocity = new Vector2(20f, m_physics.velocity.y);
                                 }
                                 else
                                 {
@@ -284,9 +291,7 @@ namespace DChild.Gameplay.Characters.Enemies
                         }
                         else
                         {
-                            m_turnState = State.Chasing;
-                            if (m_animation.GetCurrentAnimation(0).ToString() != m_turnAnimation)
-                                m_stateHandle.SetState(State.Turning);
+                            CustomTurn();
                         }
                     }
                     break;

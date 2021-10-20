@@ -1,0 +1,269 @@
+
+chibi blob.png
+size: 4096,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BlobFX/D1
+  rotate: false
+  xy: 2, 3002
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D2
+  rotate: false
+  xy: 2, 1974
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D3
+  rotate: false
+  xy: 2, 946
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D4
+  rotate: false
+  xy: 1030, 3002
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D5
+  rotate: false
+  xy: 2058, 3002
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D6
+  rotate: false
+  xy: 1030, 1974
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D7
+  rotate: false
+  xy: 1030, 946
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D8
+  rotate: false
+  xy: 2058, 1974
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D9
+  rotate: false
+  xy: 2058, 946
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+body
+  rotate: true
+  xy: 2, 2
+  size: 942, 681
+  orig: 1158, 890
+  offset: 105, 92
+  index: -1
+eye glare
+  rotate: false
+  xy: 685, 466
+  size: 122, 125
+  orig: 1158, 890
+  offset: 447, 529
+  index: -1
+eyeball
+  rotate: true
+  xy: 685, 593
+  size: 351, 291
+  orig: 1158, 890
+  offset: 314, 395
+  index: -1
+iris
+  rotate: true
+  xy: 685, 347
+  size: 117, 103
+  orig: 1158, 890
+  offset: 392, 505
+  index: -1
+
+chibi blob2.png
+size: 4096,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BlobFX/D10
+  rotate: false
+  xy: 2, 2058
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D11
+  rotate: false
+  xy: 2, 1030
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D12
+  rotate: false
+  xy: 1030, 2058
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D13
+  rotate: false
+  xy: 2, 2
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D14
+  rotate: false
+  xy: 1030, 1030
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D15
+  rotate: false
+  xy: 2058, 2058
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D16
+  rotate: false
+  xy: 1030, 2
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D17
+  rotate: false
+  xy: 2058, 1030
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D18
+  rotate: false
+  xy: 2058, 2
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+
+chibi blob3.png
+size: 4096,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BlobFX/D19
+  rotate: false
+  xy: 2, 2058
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D20
+  rotate: false
+  xy: 2, 1030
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D21
+  rotate: false
+  xy: 1030, 2058
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D22
+  rotate: false
+  xy: 2, 2
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D23
+  rotate: false
+  xy: 1030, 1030
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D24
+  rotate: false
+  xy: 2058, 2058
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D25
+  rotate: false
+  xy: 1030, 2
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D26
+  rotate: false
+  xy: 2058, 1030
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D27
+  rotate: false
+  xy: 2058, 2
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+
+chibi blob4.png
+size: 4096,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BlobFX/D28
+  rotate: false
+  xy: 2, 2058
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D29
+  rotate: false
+  xy: 2, 1030
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D30
+  rotate: false
+  xy: 1030, 2058
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
+BlobFX/D31
+  rotate: false
+  xy: 2, 2
+  size: 1026, 1026
+  orig: 1026, 1026
+  offset: 0, 0
+  index: -1
