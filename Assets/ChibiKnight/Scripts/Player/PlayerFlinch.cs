@@ -27,6 +27,8 @@ public class PlayerFlinch : MonoBehaviour
     private GameObject m_hitFX;
     [SerializeField]
     private Transform m_hitFXSpawnPoint;
+    [SerializeField]
+    private Collider2D m_hitbox;
 
     private Rigidbody2D m_rigidBody;
     private SkeletonAnimationHelper m_animator;
@@ -97,11 +99,11 @@ public class PlayerFlinch : MonoBehaviour
         m_rigidBody.velocity = Vector2.zero;
         m_rigidBody.AddForce(new Vector2(direction.x * knockBackPower, direction.y * aerialKnockBackPower), ForceMode2D.Impulse);
         m_animator.SetAnimation(0, "Flinch2", false);
-        //m_animator.SetInteger(m_flinchStateAnimationParameter, flinchState);
 
         yield return new WaitForSeconds(m_flinchDuration);
-        //m_animator.SetAnimation(0, "Idle1", true);
 
+        m_hitbox.enabled = false;
+        m_state.isInvulnerable = true;
         m_state.waitForBehaviour = false;
         m_rigidBody.gravityScale = playerGravityScale;
     }

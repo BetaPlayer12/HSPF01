@@ -24,4 +24,7 @@ public class CharacterState : MonoBehaviour
     [SerializeField, ReadOnly]
     private bool m_isDead;
     public bool isDead { get => m_isDead; set => m_isDead = value; }
+    [SerializeField, ReadOnly]
+    private bool m_isInvulnerable;
+    public bool isInvulnerable { get => m_isInvulnerable; set => m_isInvulnerable = value; }
 }

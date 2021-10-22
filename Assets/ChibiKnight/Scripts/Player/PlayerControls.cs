@@ -138,6 +138,33 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""System"",
+            ""id"": ""7587ca9f-dffc-41e9-af5b-c3c810ca0686"",
+            ""actions"": [
+                {
+                    ""name"": ""Reset"",
+                    ""type"": ""Button"",
+                    ""id"": ""9f1e2c5a-df02-4d7e-ac00-e34daf6379c7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""6759c1ae-e648-4e01-9a7a-7005e91c2a5b"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -149,6 +176,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Gameplay_Walk = m_Gameplay.FindAction("Walk", throwIfNotFound: true);
         m_Gameplay_Slash = m_Gameplay.FindAction("Slash", throwIfNotFound: true);
         m_Gameplay_UltimateSlash = m_Gameplay.FindAction("UltimateSlash", throwIfNotFound: true);
+        // System
+        m_System = asset.FindActionMap("System", throwIfNotFound: true);
+        m_System_Reset = m_System.FindAction("Reset", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -259,6 +289,39 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         }
     }
     public GameplayActions @Gameplay => new GameplayActions(this);
+
+    // System
+    private readonly InputActionMap m_System;
+    private ISystemActions m_SystemActionsCallbackInterface;
+    private readonly InputAction m_System_Reset;
+    public struct SystemActions
+    {
+        private @PlayerControls m_Wrapper;
+        public SystemActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Reset => m_Wrapper.m_System_Reset;
+        public InputActionMap Get() { return m_Wrapper.m_System; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(SystemActions set) { return set.Get(); }
+        public void SetCallbacks(ISystemActions instance)
+        {
+            if (m_Wrapper.m_SystemActionsCallbackInterface != null)
+            {
+                @Reset.started -= m_Wrapper.m_SystemActionsCallbackInterface.OnReset;
+                @Reset.performed -= m_Wrapper.m_SystemActionsCallbackInterface.OnReset;
+                @Reset.canceled -= m_Wrapper.m_SystemActionsCallbackInterface.OnReset;
+            }
+            m_Wrapper.m_SystemActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Reset.started += instance.OnReset;
+                @Reset.performed += instance.OnReset;
+                @Reset.canceled += instance.OnReset;
+            }
+        }
+    }
+    public SystemActions @System => new SystemActions(this);
     public interface IGameplayActions
     {
         void OnHorizontalInput(InputAction.CallbackContext context);
@@ -266,5 +329,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnWalk(InputAction.CallbackContext context);
         void OnSlash(InputAction.CallbackContext context);
         void OnUltimateSlash(InputAction.CallbackContext context);
+    }
+    public interface ISystemActions
+    {
+        void OnReset(InputAction.CallbackContext context);
     }
 }

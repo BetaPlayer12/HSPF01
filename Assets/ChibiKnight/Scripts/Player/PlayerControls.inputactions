@@ -125,6 +125,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "System",
+            "id": "7587ca9f-dffc-41e9-af5b-c3c810ca0686",
+            "actions": [
+                {
+                    "name": "Reset",
+                    "type": "Button",
+                    "id": "9f1e2c5a-df02-4d7e-ac00-e34daf6379c7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6759c1ae-e648-4e01-9a7a-7005e91c2a5b",
+                    "path": "<Keyboard>/p",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

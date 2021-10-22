@@ -11,10 +11,14 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (collision.IsTouchingLayers(m_layerMask))
-        //{
-        //}
-        var impactFX = Instantiate(m_impactFX, transform.position, Quaternion.identity);
-        Destroy(this.gameObject);
+        if (collision.gameObject.CompareTag("MainCamera"))
+        {
+
+        }
+        else
+        {
+            var impactFX = Instantiate(m_impactFX, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
     }
 }

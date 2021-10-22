@@ -55,11 +55,16 @@ public class PlayerController : MonoBehaviour
 
     //Death
     [SerializeField]
+    private Collider2D m_hitbox;
+    [SerializeField]
     private float m_deathX;
     [SerializeField]
     private float m_deathY;
     [SerializeField]
+    private float m_damagedInvulnerableTimer;
+    [SerializeField]
     private float m_deathTimer;
+    private float m_currentDamagedInvulnerableTimer;
     private float m_currentDeathTimer;
 
     private Rigidbody2D m_rigidbody;
@@ -78,19 +83,44 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (m_input.walkPressed)
+        {
+            m_state.waitForBehaviour = false;
+        }
+
+        if (m_state.isInvulnerable)
+        {
+            m_currentDamagedInvulnerableTimer -= Time.deltaTime;
+
+            if (m_animator.skeletonAnimation.Skeleton.Skin.ToString() == "default")
+            {
+                m_animator.skeletonAnimation.Skeleton.SetSkin("ChibiDeath");
+            }
+            else
+            {
+                m_animator.skeletonAnimation.Skeleton.SetSkin("default");
+            }
+
+            if (m_currentDamagedInvulnerableTimer <= 0)
+            {
+                m_state.isInvulnerable = false;
+                m_hitbox.enabled = true;
+                m_currentDamagedInvulnerableTimer = m_damagedInvulnerableTimer;
+                m_animator.skeletonAnimation.Skeleton.SetSkin("ChibiDeath");
+            }
+        }
+
         if (m_state.isDead)
         {
             m_currentDeathTimer -= Time.deltaTime;
 
             if (m_currentDeathTimer <= 0)
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
 
             return;
         }
-
-        EvaluateGroundedness();
 
         if (m_state.isAttacking == false)
         {
@@ -101,6 +131,8 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+
+        EvaluateGroundedness();
 
         if (m_state.isGrounded)
         {
@@ -130,6 +162,7 @@ public class PlayerController : MonoBehaviour
 
         m_damageable.OnDeath2 += HandleDeath;
         m_currentDeathTimer = m_deathTimer;
+        m_currentDamagedInvulnerableTimer = m_damagedInvulnerableTimer;
     }
 
     private void HandleGroundBehaviour()
@@ -352,13 +385,6 @@ public class PlayerController : MonoBehaviour
 
     private void HandleDeath(Vector3 sourcePosition)
     {
-        //m_state.waitForBehaviour = true;
-        //m_state.isDead = true;
-        //m_rigidbody.gravityScale = 0;
-        //m_rigidbody.velocity = Vector2.zero;
-        //m_rigidbody.AddForce(new Vector2(m_rigidbody.velocity.x, m_deathY), ForceMode2D.Impulse);
-        //m_animator.SetAnimation(0, "Flinch1", true);
-
         var direction = 0;
         Vector2 knockBackDirection = Vector2.zero;
 
@@ -373,13 +399,9 @@ public class PlayerController : MonoBehaviour
 
         knockBackDirection.x = direction;
         knockBackDirection.y = 1;
-        Debug.Log("Dead dead");
+
         m_state.waitForBehaviour = true;
         m_state.isDead = true;
-        //m_rigidbody.gravityScale = 0;
-        //m_rigidbody.velocity = Vector2.zero;
-        //m_rigidbody.AddForce(new Vector2(m_rigidbody.velocity.x, m_deathY), ForceMode2D.Impulse);
-        //m_animator.SetAnimation(0, "Flinch1", true);
 
         m_rigidbody.gravityScale = 10;
         m_rigidbody.drag = 0;
@@ -456,7 +478,7 @@ public class PlayerController : MonoBehaviour
     private void JumpRiseToFallingState_Complete(Spine.TrackEntry trackEntry)
     {
         m_animator.skeletonAnimation.state.Complete -= JumpRiseToFallingState_Complete;
-        m_animator.SetAnimation(0, "Jump_3Fall_Loop", true, 0);
+        m_animator.AddAnimation(0, "Jump_3Fall_Loop", true, 0);
     }
 
     private void LandState_Complete(Spine.TrackEntry trackEntry)
