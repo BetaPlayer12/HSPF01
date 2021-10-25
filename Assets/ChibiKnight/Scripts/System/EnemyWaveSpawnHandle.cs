@@ -31,6 +31,7 @@ namespace ChibiKnight.Systems
 
             public void StartWave()
             {
+                minionCount = m_minions.Length;
                 for (int i = 0; i < m_minions.Length; i++)
                 {
                     m_minions[i].SetActive(true);
@@ -41,7 +42,7 @@ namespace ChibiKnight.Systems
             {
                 for (int i = 0; i < m_minions.Length; i++)
                 {
-                    m_minions[i].SetActive(true);
+                    m_minions[i].SetActive(false);
                 }
             }
             private void OnMinionDeath()
