@@ -90,6 +90,8 @@ namespace ChibiKnight.Systems
                 wave.Initialize();
                 wave.StopWave();
             }
+
+            StartWaveSpawning();
         }
 
     }

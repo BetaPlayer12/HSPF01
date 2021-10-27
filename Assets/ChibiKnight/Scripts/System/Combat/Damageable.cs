@@ -32,8 +32,8 @@ namespace ChibiKnight.Systems.Combat
 
         public void TakeDamage(int value, Vector2 damageSource)
         {
-            currentHealth -= value;
-            
+            currentHealth = Mathf.Max(0, currentHealth - value);
+
             if (currentHealth <= 0)
             {
                 OnDeath?.Invoke();
