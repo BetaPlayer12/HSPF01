@@ -139,6 +139,8 @@ MonoBehaviour:
   m_isHighJumping: 0
   m_isWalking: 0
   m_waitForBehaviour: 0
+  m_isDead: 0
+  m_isInvulnerable: 0
 --- !u!50 &5082318563626561869
 Rigidbody2D:
   serializedVersion: 4
@@ -293,7 +295,7 @@ Transform:
   m_GameObject: {fileID: 5082318563200408872}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_Children:
   - {fileID: 4299927598735460450}
   - {fileID: 7427695027904542099}
