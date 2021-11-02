@@ -18,7 +18,9 @@ MonoBehaviour:
   - Example
   - General
   - Gamplay HUD
+  - WaveAnnouncement
   Categories:
   - {fileID: 11400000, guid: b01e98f4801f7124ba39e1dac4debf90, type: 2}
   - {fileID: 11400000, guid: bc0e9d32073d7f245864735ac9217bd8, type: 2}
   - {fileID: 11400000, guid: 3af69a96af14d384baf70cd272f4a1ae, type: 2}
+  - {fileID: 11400000, guid: fe2bd8a4d01cc9a49aed7bdd01b29dff, type: 2}
