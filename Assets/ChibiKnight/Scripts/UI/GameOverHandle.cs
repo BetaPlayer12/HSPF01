@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Doozy.Engine;
 using ChibiKnight.Systems;
+using UnityEngine.SceneManagement;
 
 namespace ChibiKnight
 {
@@ -14,10 +15,21 @@ namespace ChibiKnight
         private Damageable m_player;
         [SerializeField]
         private EnemyWaveSpawnHandle m_spawnHandle;
+        [SerializeField]
+        private float m_showMessageDuration;
+
         private void OnGameEnded()
         {
             GameEventMessage.SendEvent("Game Over");
+            StartCoroutine(GoToMainMenuRoutine());
         }
+
+        private IEnumerator GoToMainMenuRoutine()
+        {
+            yield return new WaitForSecondsRealtime(m_showMessageDuration);
+            SceneManager.LoadScene(0);
+        }
+
 
         private void Awake()
         {

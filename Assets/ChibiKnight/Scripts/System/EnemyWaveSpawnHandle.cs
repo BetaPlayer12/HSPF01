@@ -63,26 +63,30 @@ namespace ChibiKnight.Systems
         private int m_currentWaveIndex;
 
         public event Action AllWavesDefeated;
-        
-        [Button,HideInEditorMode,PropertyOrder(-1)]
+        public event Action<int> WaveStart;
+
+        [Button, HideInEditorMode, PropertyOrder(-1)]
         public void StartWaveSpawning()
         {
             m_currentWaveIndex = 0;
             PreSpawn();
 
         }
+
         IEnumerator DelayCoroutine()
         {
-
+            yield return null;
+            WaveStart?.Invoke(m_currentWaveIndex);
             yield return new WaitForSeconds(m_waveIntroTime);
             m_waves[m_currentWaveIndex].StartWave();
-
         }
+
         private void PreSpawn()
         {
             StartCoroutine(DelayCoroutine());
         }
-            private void OnWaveEnded()
+
+        private void OnWaveEnded()
         {
             m_currentWaveIndex++;
             if (m_currentWaveIndex < m_waves.Length)

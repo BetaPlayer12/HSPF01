@@ -7159,7 +7159,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 927.1, y: 671.16797, z: -20}
+  m_LocalPosition: {x: 927.1, y: 671.1158, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -27424,6 +27424,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 459526528321271973, guid: 4e710ea9dcda86a4b8afa71744fa0a38,
         type: 3}
+      propertyPath: m_waveIntroTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 459526528321271973, guid: 4e710ea9dcda86a4b8afa71744fa0a38,
+        type: 3}
       propertyPath: m_waves.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -27472,6 +27477,11 @@ PrefabInstance:
       propertyPath: m_spawnHandle
       value: 
       objectReference: {fileID: 614814343071535415}
+    - target: {fileID: 1554754316330068351, guid: 4e710ea9dcda86a4b8afa71744fa0a38,
+        type: 3}
+      propertyPath: m_showMessageDuration
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2148109041604623346, guid: 4e710ea9dcda86a4b8afa71744fa0a38,
         type: 3}
       propertyPath: m_RootOrder
@@ -27587,6 +27597,16 @@ PrefabInstance:
     - target: {fileID: 2142660521820181621, guid: 86e29147504e7784e8da90ae24dccd1a,
         type: 3}
       propertyPath: UseCustomStartAnchoredPosition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146348211007298365, guid: 86e29147504e7784e8da90ae24dccd1a,
+        type: 3}
+      propertyPath: m_spawnHandle
+      value: 
+      objectReference: {fileID: 614814343071535415}
+    - target: {fileID: 3907927818397419786, guid: 86e29147504e7784e8da90ae24dccd1a,
+        type: 3}
+      propertyPath: DontDestroyCanvasOnLoad
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4436324449019385823, guid: 86e29147504e7784e8da90ae24dccd1a,

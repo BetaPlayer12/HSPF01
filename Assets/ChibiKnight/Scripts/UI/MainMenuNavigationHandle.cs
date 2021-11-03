@@ -12,12 +12,18 @@ namespace ChibiKnight.MainMenu
 
         public void StartMainGame()
         {
-            SceneManager.LoadScene(m_mainSceneIndex);
+            StartCoroutine(DelayLoadPlayScene());
         }
 
         public void ExitGame()
         {
             Application.Quit();
+        }
+
+        private IEnumerator DelayLoadPlayScene()
+        {
+            yield return new WaitForSecondsRealtime(0.5f);
+            SceneManager.LoadScene(m_mainSceneIndex);
         }
     }
 
