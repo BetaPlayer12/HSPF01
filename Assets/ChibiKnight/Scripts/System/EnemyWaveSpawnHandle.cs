@@ -9,11 +9,14 @@ namespace ChibiKnight.Systems
 {
     public class EnemyWaveSpawnHandle : MonoBehaviour
     {
+        [SerializeField]
+        private float m_waveIntroTime = 8;
         [System.Serializable]
         private class WaveHandle
         {
             [SerializeField]
             private GameObject[] m_minions;
+
 
             private bool m_eventsListened;
             private int minionCount;
@@ -65,15 +68,26 @@ namespace ChibiKnight.Systems
         public void StartWaveSpawning()
         {
             m_currentWaveIndex = 0;
-            m_waves[m_currentWaveIndex].StartWave();
+            PreSpawn();
+
         }
-        
-        private void OnWaveEnded()
+        IEnumerator DelayCoroutine()
+        {
+
+            yield return new WaitForSeconds(m_waveIntroTime);
+            m_waves[m_currentWaveIndex].StartWave();
+
+        }
+        private void PreSpawn()
+        {
+            StartCoroutine(DelayCoroutine());
+        }
+            private void OnWaveEnded()
         {
             m_currentWaveIndex++;
             if (m_currentWaveIndex < m_waves.Length)
             {
-                m_waves[m_currentWaveIndex].StartWave();
+                PreSpawn();
             }
             else
             {
