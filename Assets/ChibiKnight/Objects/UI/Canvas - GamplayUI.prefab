@@ -1491,7 +1491,7 @@ MonoBehaviour:
   AutoHideAfterShowDelay: 3
   AutoSelectButtonAfterShow: 0
   BehaviorAtStart: 1
-  CustomStartAnchoredPosition: {x: 0, y: 0, z: 0}
+  CustomStartAnchoredPosition: {x: 40, y: 24, z: 0}
   DeselectAnyButtonSelectedOnHide: 0
   DeselectAnyButtonSelectedOnShow: 0
   DisableCanvasWhenHidden: 1
@@ -2232,7 +2232,7 @@ MonoBehaviour:
   TargetOrientation: 2
   UpdateHideProgressorOnShow: 0
   UpdateShowProgressorOnHide: 0
-  UseCustomStartAnchoredPosition: 0
+  UseCustomStartAnchoredPosition: 1
   ViewCategory: WaveAnnouncement
   ViewName: WaveNumber
 --- !u!222 &1228671846891288965
@@ -3940,7 +3940,7 @@ MonoBehaviour:
   AutoHideAfterShowDelay: 3
   AutoSelectButtonAfterShow: 0
   BehaviorAtStart: 1
-  CustomStartAnchoredPosition: {x: 0, y: 0, z: 0}
+  CustomStartAnchoredPosition: {x: 40, y: 24, z: 0}
   DeselectAnyButtonSelectedOnHide: 0
   DeselectAnyButtonSelectedOnShow: 0
   DisableCanvasWhenHidden: 1
@@ -4519,7 +4519,7 @@ MonoBehaviour:
   TargetOrientation: 2
   UpdateHideProgressorOnShow: 0
   UpdateShowProgressorOnHide: 0
-  UseCustomStartAnchoredPosition: 0
+  UseCustomStartAnchoredPosition: 1
   ViewCategory: WaveAnnouncement
   ViewName: WaveName
 --- !u!222 &7370556837541565601
@@ -4833,7 +4833,7 @@ MonoBehaviour:
   StartAlpha: 1
   CanvasName: GamplayUI
   CustomCanvasName: 1
-  DontDestroyCanvasOnLoad: 1
+  DontDestroyCanvasOnLoad: 0
 --- !u!1001 &3712236302322007410
 PrefabInstance:
   m_ObjectHideFlags: 0

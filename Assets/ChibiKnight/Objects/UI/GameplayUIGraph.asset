@@ -121,7 +121,10 @@ MonoBehaviour:
   m_name: Normal
   m_notes: 
   m_onEnterShowViews: []
-  m_onEnterHideViews: []
+  m_onEnterHideViews:
+  - Category: General
+    InstantAction: 0
+    Name: Fade
   m_onExitShowViews: []
   m_onExitHideViews: []
 --- !u!114 &-3727444755844987089
@@ -167,7 +170,14 @@ MonoBehaviour:
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   m_outputSockets:
   - m_connectionMode: 0
-    m_connections: []
+    m_connections:
+    - m_inputConnectionPoint: {x: -2, y: 4}
+      m_outputConnectionPoint: {x: 202, y: 4}
+      m_id: 98a6e69e-f892-44e4-aa08-c948b0703fc4
+      m_inputNodeId: 7fd51d9c-fc4a-4901-a47b-e1d52e933324
+      m_inputSocketId: 55cc8c04-1755-4729-bcd6-93b6e292f5d9
+      m_outputNodeId: a3617574-cb13-4d94-9a98-8e8e0677380e
+      m_outputSocketId: 803f6f8e-b0d4-41a7-aa07-b91085d12584
     m_connectionPoints:
     - {x: -2, y: 4}
     - {x: 202, y: 4}
@@ -182,7 +192,7 @@ MonoBehaviour:
     m_id: 803f6f8e-b0d4-41a7-aa07-b91085d12584
     m_nodeId: a3617574-cb13-4d94-9a98-8e8e0677380e
     m_socketName: OutputSocket_0
-    m_value: '{"ButtonCategory":"General","ButtonName":"Back","GameEvent":"","TimeDelay":0.0,"Trigger":0}'
+    m_value: '{"ButtonCategory":"General","ButtonName":"Back","GameEvent":"","TimeDelay":7.0,"Trigger":4}'
     m_valueTypeQualifiedName: Doozy.Engine.UI.Connections.UIConnection, Assembly-CSharp,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   m_nodeType: 4
@@ -394,11 +404,12 @@ MonoBehaviour:
   - {fileID: 7515336871661523034}
   - {fileID: -294865693919487241}
   - {fileID: 419454994604688680}
+  - {fileID: 720928618185036906}
   m_isSubGraph: 0
   m_version: 1
   m_description: 
   m_id: 2765095c-5fb6-4803-bb57-966a343689df
-  m_lastModified: 132804124401665370
+  m_lastModified: 132804738489530374
 --- !u!114 &419454994604688680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -508,6 +519,92 @@ MonoBehaviour:
   UIDrawerTriggerAction: 0
   DrawerName: Unnamed
   CustomDrawerName: 0
+--- !u!114 &720928618185036906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840a439e06374673a9115ed02deb5a54, type: 3}
+  m_Name: UINode
+  m_EditorClassIdentifier: 
+  ErrorNodeNameIsEmpty: 0
+  ErrorDuplicateNameFoundInGraph: 0
+  m_inputSockets:
+  - m_connectionMode: 1
+    m_connections:
+    - m_inputConnectionPoint: {x: -2, y: 4}
+      m_outputConnectionPoint: {x: 202, y: 4}
+      m_id: 98a6e69e-f892-44e4-aa08-c948b0703fc4
+      m_inputNodeId: 7fd51d9c-fc4a-4901-a47b-e1d52e933324
+      m_inputSocketId: 55cc8c04-1755-4729-bcd6-93b6e292f5d9
+      m_outputNodeId: a3617574-cb13-4d94-9a98-8e8e0677380e
+      m_outputSocketId: 803f6f8e-b0d4-41a7-aa07-b91085d12584
+    m_connectionPoints:
+    - {x: -2, y: 4}
+    - {x: 202, y: 4}
+    m_direction: 0
+    m_canBeDeleted: 0
+    m_canBeReordered: 0
+    m_curveModifier: 0
+    m_height: 24
+    m_width: 216
+    m_x: 0
+    m_y: 38
+    m_id: 55cc8c04-1755-4729-bcd6-93b6e292f5d9
+    m_nodeId: 7fd51d9c-fc4a-4901-a47b-e1d52e933324
+    m_socketName: InputSocket_0
+    m_value: '{"ButtonCategory":"General","ButtonName":"Unnamed","GameEvent":"","TimeDelay":3.0,"Trigger":0}'
+    m_valueTypeQualifiedName: Doozy.Engine.UI.Connections.UIConnection, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_outputSockets:
+  - m_connectionMode: 0
+    m_connections: []
+    m_connectionPoints:
+    - {x: -2, y: 4}
+    - {x: 202, y: 4}
+    m_direction: 1
+    m_canBeDeleted: 1
+    m_canBeReordered: 1
+    m_curveModifier: 0
+    m_height: 24
+    m_width: 216
+    m_x: 0
+    m_y: 62
+    m_id: 99cea064-829b-4eb8-aede-b7440bf0de68
+    m_nodeId: 7fd51d9c-fc4a-4901-a47b-e1d52e933324
+    m_socketName: OutputSocket_0
+    m_value: '{"ButtonCategory":"General","ButtonName":"Back","GameEvent":"","TimeDelay":3.0,"Trigger":0}'
+    m_valueTypeQualifiedName: Doozy.Engine.UI.Connections.UIConnection, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_nodeType: 4
+  m_allowDuplicateNodeName: 0
+  m_allowEmptyNodeName: 0
+  m_canBeDeleted: 1
+  m_debugMode: 0
+  m_useFixedUpdate: 0
+  m_useLateUpdate: 0
+  m_useUpdate: 0
+  m_height: 128
+  m_width: 216
+  m_x: 516
+  m_y: 108
+  m_minimumInputSocketsCount: 1
+  m_minimumOutputSocketsCount: 1
+  m_graphId: 2765095c-5fb6-4803-bb57-966a343689df
+  m_id: 7fd51d9c-fc4a-4901-a47b-e1d52e933324
+  m_name: Fade Away
+  m_notes: 
+  m_onEnterShowViews:
+  - Category: General
+    InstantAction: 0
+    Name: Fade
+  m_onEnterHideViews: []
+  m_onExitShowViews: []
+  m_onExitHideViews: []
 --- !u!114 &5253573999039485926
 MonoBehaviour:
   m_ObjectHideFlags: 1
