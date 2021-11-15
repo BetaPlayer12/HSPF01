@@ -565,21 +565,21 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    1: ODIN_INSPECTOR;ODIN_INSPECTOR_3;dUI_MANAGER;dUI_TextMeshPro
-    4: dUI_MANAGER;dUI_TextMeshPro
-    7: dUI_MANAGER;dUI_TextMeshPro
-    13: dUI_MANAGER;dUI_TextMeshPro
-    14: dUI_MANAGER;dUI_TextMeshPro
-    19: dUI_MANAGER;dUI_TextMeshPro
-    21: dUI_MANAGER;dUI_TextMeshPro
-    25: dUI_MANAGER;dUI_TextMeshPro
-    27: dUI_MANAGER;dUI_TextMeshPro
-    28: dUI_MANAGER;dUI_TextMeshPro
-    29: dUI_MANAGER;dUI_TextMeshPro
-    30: dUI_MANAGER;dUI_TextMeshPro
-    31: dUI_MANAGER;dUI_TextMeshPro
-    32: dUI_MANAGER;dUI_TextMeshPro
-    33: dUI_MANAGER;dUI_TextMeshPro
+    1: ODIN_INSPECTOR;ODIN_INSPECTOR_3;dUI_MANAGER;dUI_TextMeshPro;PHY2D_ENABLED;dUI_MasterAudio
+    4: dUI_MANAGER;dUI_TextMeshPro;dUI_MasterAudio
+    7: dUI_MANAGER;dUI_TextMeshPro;dUI_MasterAudio
+    13: dUI_MANAGER;dUI_TextMeshPro;dUI_MasterAudio
+    14: dUI_MANAGER;dUI_TextMeshPro;dUI_MasterAudio
+    19: dUI_MANAGER;dUI_TextMeshPro;dUI_MasterAudio
+    21: dUI_MANAGER;dUI_TextMeshPro;dUI_MasterAudio
+    25: dUI_MANAGER;dUI_TextMeshPro;dUI_MasterAudio
+    27: dUI_MANAGER;dUI_TextMeshPro;dUI_MasterAudio
+    28: dUI_MANAGER;dUI_TextMeshPro;dUI_MasterAudio
+    29: dUI_MANAGER;dUI_TextMeshPro;dUI_MasterAudio
+    30: dUI_MANAGER;dUI_TextMeshPro;dUI_MasterAudio
+    31: dUI_MANAGER;dUI_TextMeshPro;dUI_MasterAudio
+    32: dUI_MANAGER;dUI_TextMeshPro;dUI_MasterAudio
+    33: dUI_MANAGER;dUI_TextMeshPro;dUI_MasterAudio
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

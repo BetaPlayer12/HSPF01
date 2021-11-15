@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: UIButtonSettings
   m_EditorClassIdentifier: 
   database: {fileID: 11400000, guid: f17f51430f177844babc567c91c829e3, type: 2}
-  InputMode: 2
+  InputMode: 0
   KeyCode: 13
   KeyCodeAlt: 32
   ClickMode: 0
-  AllowMultipleClicks: 1
+  AllowMultipleClicks: 0
   DeselectButtonAfterClick: 0
   EnableAlternateInputs: 1
   ShowNormalLoopAnimation: 1
