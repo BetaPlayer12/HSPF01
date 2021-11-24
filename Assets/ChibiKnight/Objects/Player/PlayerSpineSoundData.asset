@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c880cc20bc6fd84a9f0617132d0390f, type: 3}
+  m_Name: PlayerSpineSoundData
+  m_EditorClassIdentifier: 
+  m_skeletonDataAsset: {fileID: 11400000, guid: c5c15b4d8e6032a4cb9d81102c0d85fe,
+    type: 2}
+  m_animationStartInfo:
+  - m_soundToPlay: ChibiDoomedKnight - Attack1
+    m_animationName: Attack1
+  - m_soundToPlay: ChibiDoomedKnight - Attack2
+    m_animationName: Attack2
+  - m_soundToPlay: ChibiDoomedKnight - Attack3
+    m_animationName: Attack3
+  - m_soundToPlay: ChibiDoomedKnight - RunInPlace
+    m_animationName: Run_inPlace
+  - m_soundToPlay: ChibiDoomedKnight - WalkInPlace
+    m_animationName: Walk_inPlace
+  - m_soundToPlay: ChibiDoomedKnight - Flinch2
+    m_animationName: Flinch2
+  - m_soundToPlay: ChibiDoomedKnight - JumpStart
+    m_animationName: Jump_1Rise_Loop
+  - m_soundToPlay: ChibiDoomedKnight - JumpEnd
+    m_animationName: Jump_3Fall_Loop
+  - m_soundToPlay: ChibiDoomedKnight - Flinch1
+    m_animationName: Flinch1
+  m_eventInfo: []

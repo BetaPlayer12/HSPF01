@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     private SkeletonAnimationHelper m_animator;
 
     //Ground Check
-    [SerializeField]
+    [SerializeField, Header("Ground Check Stuff")]
     private Vector2 m_origin;
     [SerializeField]
     private Vector2 boxSize;
@@ -40,13 +40,13 @@ public class PlayerController : MonoBehaviour
     private bool m_previouslyAirborne = false;
 
     //Jump
-    [SerializeField]
+    [SerializeField, Header("Jump Stuff")]
     private float m_highJumpDuration;
     [SerializeField]
     private bool m_isFalling = false;
 
     //Attacks
-    [SerializeField]
+    [SerializeField, Header("Attacks Stuff")]
     private float m_comboCooldown;
     [SerializeField]
     private List<AttackInfo> m_attackColliders;
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     private int m_currentCombo = 1;
 
     //Death
-    [SerializeField]
+    [SerializeField, Header("Death Stuff")]
     private Collider2D m_hitbox;
     [SerializeField]
     private float m_deathX;
@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
     private float m_originalMoveSpeed;
     private float m_comboCooldownTimer;
     private Damageable m_damageable;
+    private MeshRenderer m_renderer;
 
     private void Start()
     {
@@ -148,6 +149,7 @@ public class PlayerController : MonoBehaviour
     {
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_damageable = GetComponent<Damageable>();
+        m_renderer = GetComponent<MeshRenderer>();
 
         //Ground Check Stuff
         m_filter = new ContactFilter2D();
@@ -236,6 +238,9 @@ public class PlayerController : MonoBehaviour
         {
             if (m_state.isGrounded)
             {
+                m_currentCombo = 1;
+                m_comboCooldownTimer = m_comboCooldown;
+
                 if (m_state.isWalking == true)
                 {
                     m_animator.SetAnimation(0, "Walk_inPlace", true);
