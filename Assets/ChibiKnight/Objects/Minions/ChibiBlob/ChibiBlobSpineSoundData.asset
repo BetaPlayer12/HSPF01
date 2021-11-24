@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c880cc20bc6fd84a9f0617132d0390f, type: 3}
+  m_Name: ChibiBlobSpineSoundData
+  m_EditorClassIdentifier: 
+  m_skeletonDataAsset: {fileID: 11400000, guid: ea100f7d1267e814eaaf4a41cc78a0b5,
+    type: 2}
+  m_animationStartInfo:
+  - m_soundToPlay: ChibiBlob - Attack
+    m_animationName: Attack
+  - m_soundToPlay: ChibiBlob - Death
+    m_animationName: Death
+  - m_soundToPlay: ChibiBlob - Flinch
+    m_animationName: FlinchFX
+  - m_soundToPlay: '[None]'
+    m_animationName: Idle
+  - m_soundToPlay: ChibiBlob - Move
+    m_animationName: Move
+  m_eventInfo: []
