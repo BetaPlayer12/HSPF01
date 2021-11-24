@@ -64,7 +64,7 @@ MonoBehaviour:
   logSound: 0
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
-  busIndex: 0
+  busIndex: 3
   ignoreListenerPause: 0
   importance: 5
   isUninterruptible: 0
@@ -141,7 +141,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -265,7 +265,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
-  weight: 1
+  weight: 10
   clipAlias: 
   audLocation: 0
   resourceFileName: 
@@ -354,7 +354,31 @@ MonoBehaviour:
   addToCustomEventCategoryName: New Category
   showMusicDucking: 0
   musicDuckingSounds: []
-  groupBuses: []
+  groupBuses:
+  - busName: ChibiBlobMovement
+    volume: 1
+    isSoloed: 0
+    isMuted: 0
+    voiceLimit: 1
+    isExisting: 0
+    isTemporary: 0
+    isUsingOcclusion: 0
+    busVoiceLimitExceededMode: 0
+    busColor: {r: 1, g: 1, b: 1, a: 1}
+    mixerChannel: {fileID: 0}
+    forceTo2D: 0
+  - busName: ChibiBlobCombat
+    volume: 1
+    isSoloed: 0
+    isMuted: 0
+    voiceLimit: 1
+    isExisting: 0
+    isTemporary: 0
+    isUsingOcclusion: 0
+    busVoiceLimitExceededMode: 0
+    busColor: {r: 1, g: 1, b: 1, a: 1}
+    mixerChannel: {fileID: 0}
+    forceTo2D: 0
   playListExpanded: 0
   playlistEditorExp: 1
   musicPlaylists: []
@@ -541,7 +565,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
-  weight: 1
+  weight: 10
   clipAlias: 
   audLocation: 0
   resourceFileName: 
@@ -624,7 +648,7 @@ MonoBehaviour:
   logSound: 0
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
-  busIndex: 0
+  busIndex: 4
   ignoreListenerPause: 0
   importance: 5
   isUninterruptible: 0
@@ -719,7 +743,7 @@ MonoBehaviour:
   logSound: 0
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
-  busIndex: 0
+  busIndex: 3
   ignoreListenerPause: 0
   importance: 5
   isUninterruptible: 0
@@ -814,7 +838,7 @@ MonoBehaviour:
   logSound: 0
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
-  busIndex: 0
+  busIndex: 3
   ignoreListenerPause: 0
   importance: 5
   isUninterruptible: 0
@@ -1015,7 +1039,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
-  weight: 1
+  weight: 10
   clipAlias: 
   audLocation: 0
   resourceFileName: 
@@ -1204,7 +1228,7 @@ MonoBehaviour:
   randomVolumeMode: 0
   randomVolumeMin: 0
   randomVolumeMax: 0
-  weight: 1
+  weight: 10
   clipAlias: 
   audLocation: 0
   resourceFileName: 
